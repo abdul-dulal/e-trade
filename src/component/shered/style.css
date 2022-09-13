@@ -1,0 +1,42 @@
+.parent {
+  position: relative;
+}
+.parent:hover .accessories {
+  opacity: 1;
+  bottom: 108px;
+}
+.accessories {
+  transition: 2s;
+  position: absolute;
+  left: 0;
+  bottom: -50px;
+  opacity: 0;
+}
+
+@media screen and (min-width: 640px) {
+  .swiper-container {
+    width: 640px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .swiper-container {
+    width: 768px;
+  }
+}
+
+.ribbon {
+  background: white;
+  height: 150px;
+  width: 400px;
+  border-radius: 10px;
+}
+.ribbon:before {
+  content: "";
+  position: absolute;
+  border-bottom: 70px solid white;
+  border-left: 40px solid transparent;
+  bottom: -50px;
+  left: 150px;
+  transform: rotate(-140deg);
+}
