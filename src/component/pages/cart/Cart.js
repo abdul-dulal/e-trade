@@ -1,5 +1,5 @@
+import { info } from "daisyui/src/colors";
 import React, { useState } from "react";
-// import Carttable from "./Carttable";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useCart from "../../hooks/useCart";
@@ -7,8 +7,9 @@ import Breadcumb from "../../shered/Breadcumb";
 import CartTable from "./CartTable";
 const Cart = () => {
   const { cartInfo, refetch } = useCart();
+  const [total, setTotal] = useState([]);
   const navigate = useNavigate();
-  let total = 0;
+  console.log(total);
 
   return (
     <div>
@@ -28,7 +29,12 @@ const Cart = () => {
             </thead>
             <tbody>
               {cartInfo?.map((info) => (
-                <CartTable key={info._id} info={info} total={total} />
+                <CartTable
+                  key={info._id}
+                  info={info}
+                  total={total}
+                  setTotal={setTotal}
+                />
               ))}
             </tbody>
           </table>
@@ -48,7 +54,7 @@ const Cart = () => {
               <p className="border-b-2 border-gray-300 h-2 w-full "></p>
               <div className="flex justify-between text-2xl py-3">
                 <p>total</p>
-                <p>10</p>
+                <p>{total}</p>
               </div>
               <div className="flex gap-4 py-3">
                 <input
@@ -64,9 +70,14 @@ const Cart = () => {
                 <h2 className="text-2xl text-purple-600 font-semibold">
                   Grand Total
                 </h2>
-                <p className="text-2xl text-purple-600 font-semibold">$10</p>
+                <p className="text-2xl text-purple-600 font-semibold">
+                  {total}
+                </p>
               </div>
-              <button className="bg-purple-600 mt-4 text-white h-10 rounded-sm w-full text-xl hover:bg-gray-600 ">
+              <button
+                onClick={() => navigate("/checkout")}
+                className="bg-purple-600 mt-4 text-white h-10 rounded-sm w-full text-xl hover:bg-gray-600 "
+              >
                 Proced To Checkout
               </button>
             </div>

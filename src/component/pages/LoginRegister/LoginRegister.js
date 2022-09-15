@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import LoginModal from "./LoginModal";
+import RegisterModal from "./RegisterModal";
 
 const LoginRegister = () => {
   const [openLogin, setOpenLogin] = useState(false);
+  const [openRegister, setOpenRegister] = useState(false);
   console.log(openLogin);
   return (
     <div
       className={`flex justify-center items-center h-[500px] ${
-        openLogin ? "bg-gray-400" : ""
+        openLogin || openRegister ? "bg-gray-400" : ""
       }`}
     >
       <div className="space-y-3">
@@ -19,11 +21,18 @@ const LoginRegister = () => {
         >
           Login
         </button>
-        <button className="bg-black  w-36 h-14 rounded-sm font-bold text-white ml-8">
+        <button
+          className="bg-black  w-36 h-14 rounded-sm font-bold text-white ml-8"
+          onClick={() => setOpenRegister(true)}
+        >
           Register
         </button>
       </div>
       <LoginModal openLogin={openLogin} setOpenLogin={setOpenLogin} />
+      <RegisterModal
+        openRegister={openRegister}
+        setOpenRegister={setOpenRegister}
+      />
     </div>
   );
 };

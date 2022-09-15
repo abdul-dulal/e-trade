@@ -137,7 +137,7 @@ const Navbar = () => {
                 <>
                   <ul
                     tabIndex="0"
-                    className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+                    className="dropdown-content menu ml-4 p-2 shadow bg-base-100 rounded-box w-52"
                   >
                     <li>
                       <Link to={"/my-account"}>My Account</Link>
@@ -146,12 +146,6 @@ const Navbar = () => {
                       <Logout />
                     ) : (
                       <>
-                        <li>
-                          <Link to={"/register"}>Register</Link>
-                        </li>
-                        <li>
-                          <Link to={"/login"}>Login</Link>
-                        </li>
                         <li>
                           <Link to={"/loginregister"}>LoginRegister</Link>
                         </li>

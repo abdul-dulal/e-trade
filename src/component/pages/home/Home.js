@@ -1,6 +1,5 @@
 import React from "react";
 import Banner from "./Banner";
-
 import ProductCategory from "./ProductCategory";
 import Security from "./Security";
 import Slider from "./Slider";

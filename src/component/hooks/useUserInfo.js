@@ -2,25 +2,22 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import auth from "../../FirebaseInit";
-
 import Loading from "../shered/Loading";
-
-const useCart = () => {
+const useUserInfo = () => {
   const [user] = useAuthState(auth);
   const {
     isLoading,
-    data: cartInfo,
-    refetch: reload,
-  } = useQuery("demo", () =>
+    data: userInfo,
+    refetch: userRealod,
+  } = useQuery("result", () =>
     fetch(
-      `https://e-trade-server.vercel.app/cart/get-cartItems?user=${user?.email}`
+      `https://gentle-inlet-09370.herokuapp.com/get-user/${user?.email}`
     ).then((res) => res.json())
   );
   if (isLoading) {
     return <Loading />;
   }
-
-  return { cartInfo, reload };
+  return { userInfo, userRealod };
 };
 
-export default useCart;
+export default useUserInfo;

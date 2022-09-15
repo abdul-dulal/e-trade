@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import useCart from "../../hooks/useCart";
 
-const CartTable = ({ info, total }) => {
+const CartTable = ({ info, total, setTotal }) => {
   const [increment, setIncrement] = useState(1);
   const { img, price, price2, name, _id } = info;
   const { reload } = useCart();
   total = increment * price;
+
+  setTotal(total);
   const removeItems = (_id) => {
-    console.log(_id);
-    fetch(`http://localhost:3000/cart/deleteCart-item/${_id}`, {
+    fetch(`https://e-trade-server.vercel.app/cart/deleteCart-item/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

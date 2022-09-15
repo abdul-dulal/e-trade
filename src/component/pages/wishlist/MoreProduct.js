@@ -7,7 +7,9 @@ const Moreproduct = ({ category }) => {
   const [moreProduct, setMorePorduct] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    fetch(`http://localhost:3000/product/get-Bycategory?category=${category}`)
+    fetch(
+      `https://e-trade-server.vercel.app/product/get-Bycategory?category=${category}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setMorePorduct(data);
@@ -22,7 +24,7 @@ const Moreproduct = ({ category }) => {
             <>
               <div className="flex lg:justify-between gap-8 flex-wrap justify-center container mt-10  overflow-hidden ">
                 {moreProduct.map((e) => (
-                  <div className="parent ">
+                  <div className="parent " key={e._id}>
                     <div class=" rounded-md bg-base-100 shadow-xl w-64 h-96 border-2">
                       <img
                         src={e.img}

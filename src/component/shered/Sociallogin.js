@@ -28,13 +28,16 @@ const Sociallogin = () => {
     <div className="text-center ">
       <div className=" mt-8">
         <button onClick={() => signInWithGoogle()}>
-          <AiOutlineGoogle className="text-4xl bg-gray-200 text-red-600  p-2 hover:bg-[#DB4437] hover:text-white duration-1000 rounded-full " />
+          <AiOutlineGoogle
+            title="Login With Google"
+            className="text-4xl  text-white  p-2 bg-[#DB4437] hover:text-white duration-1000 rounded-full "
+          />
         </button>
         <button onClick={() => signInWithGithub()}>
-          <FaFacebookF className="text-4xl bg-gray-200 text-[#4867AA]  p-2 hover:bg-[#4867AA] hover:text-white duration-1000 rounded-full ml-5" />
+          <FaFacebookF className="text-4xl  text-white  p-2 bg-[#4867AA] hover:text-white duration-1000 rounded-full ml-5" />
         </button>
         <button onClick={() => signInWithFacebook()}>
-          <AiOutlineGithub className="text-4xl bg-gray-200 text-[#161B22]  p-2 hover:bg-[#161B22] hover:text-white duration-1000 rounded-full ml-5 " />
+          <AiOutlineGithub className="text-4xl  text-white  p-2 bg-[#161B22] hover:text-white duration-1000 rounded-full ml-5 " />
         </button>
       </div>
     </div>

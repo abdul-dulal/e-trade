@@ -16,13 +16,15 @@ const ClientsFeedback = () => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    axios.get(`http://localhost:3000/review/all-review`).then((res) => {
-      setReviews(res.data);
-      setLoading(true);
-    });
+    axios
+      .get(`https://e-trade-server.vercel.app/review/all-review`)
+      .then((res) => {
+        setReviews(res.data);
+        setLoading(true);
+      });
   }, []);
   return (
-    <div className="container  bg-gray-200">
+    <div className="container  bg-gray-200 mb-20">
       <h1 className="text-2xl my-16 font-serif pt-8">Users Feedback</h1>
       <div className=" py-10">
         {loading ? (
@@ -49,7 +51,7 @@ const ClientsFeedback = () => {
             onSlideChange={() => console.log("slide change")}
           >
             {reviews.map((review) => (
-              <SwiperSlide>
+              <SwiperSlide key={review._id}>
                 <div>
                   <div className="relative">
                     <div className="ribbon p-10">

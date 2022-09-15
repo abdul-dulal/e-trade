@@ -15,7 +15,7 @@ const Vendorslider = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("http://localhost:3000/vendor/vendor")
+    fetch("https://e-trade-server.vercel.app/vendor/vendor")
       .then((res) => res.json())
       .then((data) => {
         setVendors(data);
@@ -48,7 +48,7 @@ const Vendorslider = () => {
           autoplay={true}
         >
           {vendors.map((vendor) => (
-            <SwiperSlide>
+            <SwiperSlide key={vendor._id}>
               <div
                 className="border-2  py-2 px-2 cursor-pointer"
                 onClick={() => navigate(`/shop/${vendor._id}`)}

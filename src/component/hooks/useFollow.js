@@ -8,8 +8,8 @@ const useFollower = (id) => {
     data: followers,
     refetch: followerRefetch,
   } = useQuery("productdemo", () =>
-    fetch(`https://gentle-inlet-09370.herokuapp.com/vendor/${id}`).then((res) =>
-      res.json()
+    fetch(`https://e-trade-server.vercel.app/vendor/vendorInfo/${id}`).then(
+      (res) => res.json()
     )
   );
   if (isLoading) {

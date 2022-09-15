@@ -5,6 +5,7 @@ import Rattings from "../../shered/Ratting";
 
 const VendorProduct = ({ user }) => {
   const { products } = useVendor(user);
+  console.log(user);
 
   return (
     <div>
@@ -12,11 +13,11 @@ const VendorProduct = ({ user }) => {
         {products.length > 0 ? (
           <div className="flex lg:justify-between gap-8 flex-wrap justify-center container mt-10  overflow-hidden ">
             {products.map((product) => (
-              <div className="parent ">
-                <div class=" rounded-md bg-base-100 shadow-xl w-64 h-96 border-2">
+              <div className="parent" key={product._id}>
+                <div class=" rounded-md bg-base-100 shadow-xl w-[280px] h-96 border-2">
                   <img
                     src={product.img}
-                    className="  h-60 pt-3 ml-3 rounded-lg"
+                    className="  h-60 pt-3 block mx-auto hover:scale-110 duration-500"
                     alt=""
                   />
 

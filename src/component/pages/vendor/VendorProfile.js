@@ -31,7 +31,7 @@ const Profile = ({ user }) => {
       <div className="my-14">
         <h2 className="text-2xl font-semibold">Product Ratting and Reviews</h2>
         {products.map((e) => (
-          <div>
+          <div key={e._id}>
             {e.review && (
               <div className="flex gap-20 mt-5 border-2 p-4">
                 <div>

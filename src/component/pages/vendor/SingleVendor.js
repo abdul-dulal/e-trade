@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-// import Breadcumb from "../../shere/Breadcumb";
 import { RiChatFollowUpFill } from "react-icons/ri";
 
 import { toast } from "react-toastify";
@@ -21,7 +20,7 @@ const Singlevendor = () => {
     const newFollower = parseFloat(follower) + 1;
     const updateFollwer = { follower: newFollower };
     fetch(
-      `https://gentle-inlet-09370.herokuapp.com/followers/${followers?._id}`,
+      `https://e-trade-server.vercel.app/vendor/update-follwer/${followers?._id}`,
       {
         method: "PUT",
         headers: {
@@ -30,11 +29,12 @@ const Singlevendor = () => {
         body: JSON.stringify(updateFollwer),
       }
     )
-      .then((response) => response.json())
-      .then((data) => {
+      .then((response) => {
         followerRefetch();
-        toast("following");
-      });
+        toast("Thanks To Following");
+        response.json();
+      })
+      .then((data) => {});
     setFollow(!follow);
   };
 
@@ -42,7 +42,7 @@ const Singlevendor = () => {
     const newFollower = parseFloat(follower) - 1;
     const updateFollwer = { follower: newFollower };
     fetch(
-      `https://gentle-inlet-09370.herokuapp.com/followers/${followers?._id}`,
+      `https://e-trade-server.vercel.app/vendor/update-follwer/${followers?._id}`,
       {
         method: "PUT",
         headers: {

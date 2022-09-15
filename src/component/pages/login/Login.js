@@ -36,7 +36,6 @@ const Login = () => {
   return (
     <div className="bg-gray-200">
       <div className="flex ">
-        <div></div>
         <div className="container  py-20">
           <div className="w-full flex items-center justify-center">
             <div>

@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const useVendor = (user) => {
   const [products, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    fetch(`http://localhost:3000/product/vendorProduct?user=${user}`)
+    fetch(
+      `https://e-trade-server.vercel.app/product/get-vendorPorudct?user=${user}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);

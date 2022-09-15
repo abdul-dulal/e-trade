@@ -39,7 +39,7 @@ const Hover = ({ data }) => {
       ratting: data.ratting,
       user: user.email,
     };
-    fetch("http://localhost:3000/wishlist/post-wishlistItems", {
+    fetch("https://e-trade-server.vercel.app/wishlist/post-wishlistItems", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -74,7 +74,7 @@ const Hover = ({ data }) => {
       vendorName: data?.vendorName,
     };
 
-    fetch("http://localhost:3000/cart/postCart", {
+    fetch("https://e-trade-server.vercel.app/cart/postCart", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

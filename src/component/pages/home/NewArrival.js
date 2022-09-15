@@ -7,7 +7,9 @@ const Newarrival = () => {
   const [products, setproduct] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    fetch("http://localhost:3000/product/get-featured?highlights=new")
+    fetch(
+      "https://e-trade-server.vercel.app/product/get-featured?highlights=new"
+    )
       .then((res) => res.json())
       .then((data) => {
         setproduct(data);
@@ -21,7 +23,7 @@ const Newarrival = () => {
         <>
           <div className="flex lg:justify-between gap-9 flex-wrap justify-center container mt-10  overflow-hidden ">
             {products.map((product) => (
-              <div className="parent ">
+              <div className="parent " key={product._id}>
                 <div className="  rounded-md bg-base-100 shadow w-[312px] h-96 border-2">
                   <img
                     src={product.img}
