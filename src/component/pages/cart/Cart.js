@@ -1,6 +1,5 @@
-import { info } from "daisyui/src/colors";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useCart from "../../hooks/useCart";
 import Breadcumb from "../../shered/Breadcumb";
@@ -9,7 +8,6 @@ const Cart = () => {
   const { cartInfo, refetch } = useCart();
   const [total, setTotal] = useState([]);
   const navigate = useNavigate();
-  console.log(total);
 
   return (
     <div>
@@ -74,12 +72,14 @@ const Cart = () => {
                   {total}
                 </p>
               </div>
-              <button
-                onClick={() => navigate("/checkout")}
-                className="bg-purple-600 mt-4 text-white h-10 rounded-sm w-full text-xl hover:bg-gray-600 "
+              <Link
+                to="/checkout"
+                state={{ total, ischeck: true }}
+                className="bg-purple-600 mt-4 text-white py-3 px-10  rounded-sm w-full
+                text-xl hover:bg-gray-600 "
               >
                 Proced To Checkout
-              </button>
+              </Link>
             </div>
           </div>
         </div>

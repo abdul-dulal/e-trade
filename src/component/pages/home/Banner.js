@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import banner1 from "../../../assets/banner/sub-banner-1.jpg";
 import banner2 from "../../../assets/banner/sub-banner-2.jpg";
 const Banner = () => {
+  const navigate = useNavigate();
   return (
     <div className="grid lg:grid-cols-2 gap-12  my-14 container">
       <div
@@ -19,7 +21,10 @@ const Banner = () => {
             <p>Weekend 25% off</p>
             <h1 className="text-2xl font-bold ">Potato crunchy</h1>
             <h1 className="text-2xl font-bold ">chips</h1>
-            <button className="w-32 h-10 bg-primary rounded text-white mt-3">
+            <button
+              onClick={() => navigate("/shop")}
+              className="w-32 h-10 bg-primary rounded text-white mt-3"
+            >
               Show Now
             </button>
           </div>
@@ -40,7 +45,10 @@ const Banner = () => {
             <p>Weekend 25% off</p>
             <h1 className="text-2xl font-bold ">Healthy oatmeal </h1>
             <h1 className="text-2xl font-bold ">waffle</h1>
-            <button className="w-32 h-10 bg-primary rounded text-white mt-3">
+            <button
+              onClick={() => navigate("/shop")}
+              className="w-32 h-10 bg-primary rounded text-white mt-3"
+            >
               Show Now
             </button>
           </div>

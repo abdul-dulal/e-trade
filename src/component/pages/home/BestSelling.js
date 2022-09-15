@@ -10,9 +10,7 @@ const BestSelling = () => {
   const [loading, setLoading] = useState(false);
   //   const { reviews } = useReviews();
   useEffect(() => {
-    fetch(
-      "https://e-trade-server.vercel.app/product/get-featured?highlights=best"
-    )
+    fetch("http://localhost:3000/product/get-featured?highlights=best")
       .then((res) => res.json())
       .then((data) => {
         setproduct(data);

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../FirebaseInit";
 import useCart from "../../hooks/useCart";
 import useUserInfo from "../../hooks/useUserInfo";
@@ -11,7 +11,7 @@ import Payment from "../payment/Payment";
 const Checkout = () => {
   const { cartInfo } = useCart();
   const [user] = useAuthState(auth);
-
+  const location = useLocation();
   const { userInfo } = useUserInfo();
   const navigate = useNavigate();
 
@@ -27,6 +27,7 @@ const Checkout = () => {
       return x + y;
     });
   const onSubmit = (data) => {
+    console.log("click");
     navigate("/checkout-method");
   };
 
@@ -42,47 +43,26 @@ const Checkout = () => {
             <div>
               <div className="flex gap-5 my-3">
                 <div>
-                  <label className="block my-2">First Name</label>
+                  <label className="block my-2"> Name</label>
                   <input
                     type="text"
                     {...register("fname", {
                       required: {
                         value: true,
-                        message: "Please Enter  first name ",
+                        message: "Please Enter  name ",
                       },
                     })}
                     className=" md:w-96 w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   />
-                </div>
-                <label>
-                  {errors.fname?.type === "required" && (
-                    <span className="label-text-alt text-red-500 text-xl">
-                      {errors.message}
-                    </span>
-                  )}
-                </label>
-                <div>
-                  <label className="block my-2">Last Name</label>
-                  <input
-                    type="text"
-                    {...register("lname", {
-                      required: {
-                        value: true,
-                        message: "Please Enter Last name",
-                      },
-                    })}
-                    className="  md:w-96 w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                  />
                   <label>
-                    {errors.lname?.type === "required" && (
-                      <span className="label-text-alt text-red-500 text-xl">
-                        {errors.message}
-                      </span>
+                    {errors.fname?.type === "required" && (
+                      <p className="label-text-alt text-red-500 text-xl">
+                        {errors.fname.message}
+                      </p>
                     )}
                   </label>
                 </div>
-              </div>
-              <div className="flex gap-10 my-3">
+
                 <div>
                   <label className="block my-2">Email</label>
                   <input
@@ -93,18 +73,18 @@ const Checkout = () => {
                         message: "Please Enter Email",
                       },
                     })}
-                    defaultValue={userInfo ? user?.email : ""}
                     className=" md:w-96 w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   />
                   <label>
-                    {" "}
                     {errors.email?.type === "required" && (
-                      <span className="label-text-alt text-red-500 text-xl">
-                        {errors.message}
-                      </span>
+                      <p className="label-text-alt text-red-500 text-xl">
+                        {errors.email.message}
+                      </p>
                     )}
                   </label>
                 </div>
+              </div>
+              <div className="flex gap-10 my-3">
                 <div>
                   <label className="block my-2">Phone</label>
                   <input
@@ -119,12 +99,12 @@ const Checkout = () => {
                   />
                   <label>
                     {errors.phone?.type === "required" && (
-                      <span>{errors.message}</span>
+                      <p className="label-text-alt text-red-500 text-xl">
+                        {errors.phone.message}
+                      </p>
                     )}
                   </label>
                 </div>
-              </div>
-              <div className="flex gap-10 my-3">
                 <div>
                   <label className="block my-2">Zip Code</label>
                   <input
@@ -140,10 +120,14 @@ const Checkout = () => {
                   />
                   <label>
                     {errors.zip?.type === "required" && (
-                      <span>{errors.message}</span>
+                      <p className="label-text-alt text-red-500 text-xl">
+                        {errors.zip.message}
+                      </p>
                     )}
                   </label>
                 </div>
+              </div>
+              <div className="flex gap-10 my-3">
                 <div>
                   <label className="block my-2">City</label>
                   <input
@@ -159,9 +143,19 @@ const Checkout = () => {
                   />
                   <label>
                     {errors.city?.type === "required" && (
-                      <span>{errors.message}</span>
+                      <p className="label-text-alt text-red-500 text-xl">
+                        {errors.city.message}
+                      </p>
                     )}
                   </label>
+                </div>
+                <div>
+                  <label className="block my-2">Street Address</label>
+                  <input
+                    type="text"
+                    defaultValue={userInfo ? userInfo.address : ""}
+                    className=" md:w-96 w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  />
                 </div>
               </div>
               <div className="flex gap-10 my-3">
@@ -180,27 +174,28 @@ const Checkout = () => {
                   />
                   <label>
                     {errors.state?.type === "required" && (
-                      <span>{errors.message}</span>
+                      <p className="label-text-alt text-red-500 text-xl">
+                        {errors.state.message}
+                      </p>
                     )}
                   </label>
                 </div>
                 <div>
-                  <label className="block my-2">Street Address</label>
+                  <label className="block my-2">Country</label>
                   <input
                     type="text"
-                    defaultValue={userInfo ? userInfo.address : ""}
+                    {...register("country")}
+                    defaultValue={userInfo ? userInfo.country : ""}
                     className=" md:w-96 w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   />
+                  <label>
+                    {errors.country?.type === "required" && (
+                      <p className="label-text-alt text-red-500 text-xl">
+                        {errors.country.message}
+                      </p>
+                    )}
+                  </label>
                 </div>
-              </div>
-              <div>
-                <label className="block my-2">Country</label>
-                <input
-                  type="text"
-                  {...register("country")}
-                  defaultValue={userInfo ? userInfo.country : ""}
-                  className=" md:w-96 w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                />
               </div>
             </div>
             <div>
@@ -213,8 +208,8 @@ const Checkout = () => {
                 <p className="border-solid border-2 border-gray-300 mb-5"></p>
                 <div className="">
                   {cartInfo?.map((e) => (
-                    <div className="flex justify-between gap-4 space-y-6">
-                      <h2>{e.name}</h2>
+                    <div className="flex items-center justify-between gap-4 space-y-6">
+                      <h2 className="mt-6">{e.name}</h2>
                       <p>$ {e.price}</p>
                     </div>
                   ))}
@@ -228,12 +223,14 @@ const Checkout = () => {
                 <p className="border-solid border-2 border-gray-300 my-5"></p>
                 <div className="flex  justify-between">
                   <p className="text-2xl">Total</p>
-                  <p className="text-2xl text-purple-600"> $ {totalPrice}</p>
+                  <p className="text-2xl">
+                    $ {location?.state ? location?.state?.total : totalPrice}
+                  </p>
                 </div>
                 <input
                   type="submit"
                   value="Place order"
-                  className="uppercase bg-purple-600 mt-6 cursor-pointer h-12 w-full rounded-full text-white hover:bg-gray-600"
+                  className="uppercase bg-primary mt-6 cursor-pointer h-12 w-full rounded-full text-white hover:bg-gray-600"
                 />
               </div>
             </div>

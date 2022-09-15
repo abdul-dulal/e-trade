@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../FirebaseInit";
 import useUploadproduct from "../../hooks/useUploadProduct";
+import AddProduct from "./AddProduct";
 import Producttable from "./Producttable";
 
 const VendorProducts = () => {
@@ -68,6 +69,7 @@ const VendorProducts = () => {
           </tbody>
         </table>
       </div>
+      <AddProduct popup={popup} setPopup={setPopup} />
     </div>
   );
 };

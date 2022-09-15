@@ -13,8 +13,10 @@ import slider2 from "../../../assets/slider/slider3.jpg";
 import slider3 from "../../../assets/slider/slider2.jpg";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useNavigate } from "react-router-dom";
 
 const Slider = () => {
+  const navigate = useNavigate();
   return (
     <div className=" my-10 mb-14">
       <div className="">
@@ -28,13 +30,28 @@ const Slider = () => {
           lazy={true}
         >
           <SwiperSlide>
-            <img src={slider1} alt="" />
+            <img
+              src={slider1}
+              onClick={() => navigate("/shop")}
+              className="cursor-pointer"
+              alt=""
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={slider2} alt="" />
+            <img
+              src={slider2}
+              onClick={() => navigate("/shop")}
+              className="cursor-pointer"
+              alt=""
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={slider3} alt="" />
+            <img
+              src={slider3}
+              onClick={() => navigate("/shop")}
+              className="cursor-pointer"
+              alt=""
+            />
           </SwiperSlide>
         </Swiper>
       </div>

@@ -13,7 +13,7 @@ const VendorDashboard = () => {
       <div className="flex">
         <h2>Hello {user?.email.slice(0, -10)}</h2>(
         <span className="ml-2">not {user?.email.slice(0, -10)}?</span>
-        <span className="text-purple-600 underline">
+        <span className=" underline">
           <Logout />
         </span>
         )
@@ -21,7 +21,7 @@ const VendorDashboard = () => {
 
       <button
         onClick={() => navigate("/my-account")}
-        className="bg-purple-600 h-9 w-52 mt-10 rounded-sm text-white font-semibold"
+        className="bg-primary h-9 w-52 mt-10 rounded-sm text-white font-semibold"
       >
         Go to My-Account
       </button>

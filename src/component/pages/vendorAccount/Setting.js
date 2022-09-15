@@ -11,7 +11,7 @@ const Setting = () => {
   const [storeName, setStoreName] = useState();
   console.log(storeName?.user);
   useEffect(() => {
-    fetch(`https://e-trade-server.vercel.app/vendor/user/${user?.email}`)
+    fetch(`http://localhost:3000/vendor/user/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setStoreName(data));
   }, [user?.email]);
@@ -37,7 +37,7 @@ const Setting = () => {
           console.log(store);
 
           fetch(
-            `https://e-trade-server.vercel.app/vendor/update-vendorInfo/${storeName.user}`,
+            `http://localhost:3000/vendor/update-vendorInfo/${storeName.user}`,
             {
               method: "PUT",
               headers: {
@@ -70,7 +70,7 @@ const Setting = () => {
         </div>
         <div className="flex gap-5 mb-5">
           <span className="font-semibold block">Store Image :</span>
-          <label class="w-64 flex flex-col items-center px-2 py-4 bg-white rounded-md shadow-md tracking-wide uppercase border border-blue cursor-pointer hover:bg-purple-600 hover:text-white text-purple-600 ease-linear transition-all duration-150">
+          <label class="w-64 flex flex-col items-center px-2 py-4 bg-white rounded-md shadow-md tracking-wide uppercase border border-blue cursor-pointer hover:bg-primary hover:text-white text-black ease-linear transition-all duration-150">
             <BsFillCloudArrowUpFill className="text-5xl" />
             <span className="font-semibold">Upload a Product</span>
             <input type="file" {...register("img")} className="hidden" />
@@ -89,7 +89,7 @@ const Setting = () => {
         <input
           type="submit"
           value="Update Setting"
-          className="h-10 w-64 bg-purple-600 text-white rounded-sm cursor-pointer  block mx-auto mt-5"
+          className="h-10 w-64 bg-primary text-white rounded-sm cursor-pointer  block mx-auto mt-5"
         />
       </form>
     </div>

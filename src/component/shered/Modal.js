@@ -18,13 +18,13 @@ const Modal = ({ popup, setPopup, data }) => {
   const twShare = "https://twitter.com/";
   const lkShare = "https://www.linkedin.com/feed/";
   const props = {
-    width: 600,
-    zoomPosition: "top",
+    width: 500,
+    zoomPosition: "left",
+    height: 375,
     zoomWidth: 400,
-    zoomStyle: { opacity: 0.7, backgroundColor: "grey" },
-    img: data?.img,
-    height: 300,
+    img: data.img,
   };
+
   return (
     <div>
       {popup ? (
@@ -45,7 +45,7 @@ const Modal = ({ popup, setPopup, data }) => {
                 <hr className="mt-7" />
                 <div className="grid grid-cols-2 gap-6 container py-16 ">
                   <div className="">
-                    <ReactImageZoom {...props} />
+                    <img src={data.img} alt="" />
                   </div>
                   <div>
                     <h2 className="text-2xl text-[#6B7280] mb-2 ">
