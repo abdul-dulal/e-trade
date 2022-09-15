@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import view from "../../assets/icon/view.png";
 import wishlist from "../../assets/icon/wishlist.png";
 import cart from "../../assets/icon/cart.png";
@@ -11,15 +11,28 @@ import "react-toastify/dist/ReactToastify.css";
 import auth from "../../FirebaseInit";
 import Modal from "./Modal";
 import useWishlist from "../hooks/useWishlist";
+import { backgroundContext } from "../../App";
 
 const Hover = ({ data }) => {
-  const [popup, setPopup] = useState(false);
+  const [popup, setPopup] = React.useContext(backgroundContext);
+  const [loading, setLoading] = useState(false);
+  const [modalDta, setmodalData] = useState();
+  console.log(modalDta);
   const { refetch } = useWishlist();
   const { reload } = useCart();
 
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
+  const handleview = (id) => {
+    fetch(`http://localhost:3000/product/edit-product/${id}`)
+      .then((res) => res.json())
+      .then((result) => {
+        setPopup(true);
+        setLoading(true);
+        setmodalData(result);
+      });
+  };
   const handleWishlit = () => {
     if (!user) {
       navigate("/LoginRegister");
@@ -94,9 +107,12 @@ const Hover = ({ data }) => {
 
   return (
     <div>
-      <div className=" flex gap-4 justify-center bg-primary  h-10 py-1  w-full    rounded accessories  ">
+      <div
+        className={`flex gap-4 justify-center bg-primary  h-10 py-1  w-full    rounded accessories 
+        }`}
+      >
         <img
-          onClick={() => setPopup(true)}
+          onClick={() => handleview(data._id)}
           src={view}
           className="p-1 bg-white rounded-full  cursor-pointer"
           alt=""
@@ -116,7 +132,12 @@ const Hover = ({ data }) => {
         />
       </div>
 
-      <Modal popup={popup} setPopup={setPopup} data={data} />
+      <Modal
+        popup={popup}
+        setPopup={setPopup}
+        data={modalDta}
+        loading={loading}
+      />
     </div>
   );
 };

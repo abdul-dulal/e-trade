@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -7,7 +8,7 @@ const Footer = () => {
         <h2 className="text-white text-xl font-semibold uppercase">About Us</h2>
         <ul className="text-white font-semibold">
           <li>About Us</li>
-          <li>Contact</li>
+          <Link to="/contact">Contact</Link>
         </ul>
       </div>
       <div className="text-white">
@@ -24,10 +25,18 @@ const Footer = () => {
           follow us
         </h2>
         <ul className="font-semibold">
-          <li>Facebook</li>
-          <li>Instagram</li>
-          <li>Linkeding</li>
-          <li>Twiter</li>
+          <a href="https://www.facebook.com/" className="block" target="blank">
+            Facebook
+          </a>
+          <a href="instagram.com" target="blank" className="block">
+            Instagram
+          </a>
+          <a href="https://www.linkedin.com/" target="blank" className="block">
+            Linkeding
+          </a>
+          <a href="https://twitter.com/" className="block">
+            Twiter
+          </a>
         </ul>
       </div>
       <div className="text-white">
@@ -35,7 +44,12 @@ const Footer = () => {
           SUBSCRIBE
         </h2>
         <p>Get E-mail updates about our latest shop and special offers.</p>
-        <input type="text" placeholder="hello" className="h-10 w-72" /> <br />
+        <input
+          type="text"
+          placeholder=" example@gmail.com"
+          className="h-10 w-72 px-1"
+        />{" "}
+        <br />
         <input
           type="submit"
           value="SUBSCRIBE"

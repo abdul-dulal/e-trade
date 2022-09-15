@@ -1,12 +1,16 @@
 import React, { useState } from "react";
+import { backgroundContext } from "../../../App";
 import BestSelling from "./BestSelling";
 import Featured from "./Featured";
 import NewArrival from "./NewArrival";
 
 const TrandingProduct = () => {
   const [showProduct, setShowproduct] = useState("best");
+  const [popup] = React.useContext(backgroundContext);
+  console.log(popup);
+
   return (
-    <div className="my-16">
+    <div className={`my-16 `}>
       <div className="flex justify-between items-center container">
         <div>
           <h1 className="text-2xl font-semibold text-center lg:block md:block hidden md:mt-8 ">

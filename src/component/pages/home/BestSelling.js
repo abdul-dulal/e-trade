@@ -5,9 +5,11 @@ import Ratting from "../../shered/Ratting";
 import Loading from "../../shered/Loading";
 import Hover from "../../shered/Hover";
 import "../../shered/style.css";
+import { backgroundContext } from "../../../App";
 const BestSelling = () => {
   const [products, setproduct] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [popup] = React.useContext(backgroundContext);
   //   const { reviews } = useReviews();
   useEffect(() => {
     fetch("http://localhost:3000/product/get-featured?highlights=best")
@@ -22,10 +24,12 @@ const BestSelling = () => {
     <div>
       {loading ? (
         <>
-          <div className="flex lg:justify-between gap-8 flex-wrap justify-center container mt-10  overflow-hidden ">
+          <div
+            className={`flex lg:justify-between gap-8 flex-wrap justify-center container mt-10  overflow-hidden `}
+          >
             {products.map((product) => (
               <div className="parent " key={product._id}>
-                <div className=" rounded-md bg-base-100 shadow w-[312px] h-96 border-2">
+                <div className={` rounded-md  shadow w-[312px] h-96 border-2 `}>
                   <img
                     src={product.img}
                     className="  h-60 pt-3 block mx-auto rounded-lg hover:scale-110 duration-500"

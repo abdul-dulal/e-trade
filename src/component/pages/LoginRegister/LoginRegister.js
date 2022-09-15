@@ -9,7 +9,7 @@ const LoginRegister = () => {
   return (
     <div
       className={`flex justify-center items-center h-[500px] ${
-        openLogin || openRegister ? "bg-gray-400" : ""
+        openLogin || openRegister ? "bg-gray-100" : ""
       }`}
     >
       <div className="space-y-3">

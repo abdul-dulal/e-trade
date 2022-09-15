@@ -30,7 +30,7 @@ export const backgroundContext = React.createContext();
 function App() {
   const [popup, setPopup] = useState(false);
   return (
-    <div>
+    <div className={`${popup ? "bg-gray-100 text-gray-600" : ""}`}>
       <Navbar />
       <backgroundContext.Provider value={[popup, setPopup]}>
         <Routes>
