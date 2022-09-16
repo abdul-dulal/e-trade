@@ -11,7 +11,7 @@ const Setting = () => {
   const [storeName, setStoreName] = useState();
   console.log(storeName?.user);
   useEffect(() => {
-    fetch(`http://localhost:3000/vendor/user/${user?.email}`)
+    fetch(`https://e-trade-server.vercel.app/vendor/user/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setStoreName(data));
   }, [user?.email]);
@@ -37,7 +37,7 @@ const Setting = () => {
           console.log(store);
 
           fetch(
-            `http://localhost:3000/vendor/update-vendorInfo/${storeName.user}`,
+            `https://e-trade-server.vercel.app/vendor/update-vendorInfo/${storeName.user}`,
             {
               method: "PUT",
               headers: {

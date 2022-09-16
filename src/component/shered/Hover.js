@@ -14,10 +14,10 @@ import useWishlist from "../hooks/useWishlist";
 import { backgroundContext } from "../../App";
 
 const Hover = ({ data }) => {
-  const [popup, setPopup] = React.useContext(backgroundContext);
+  // const [popup, setPopup] = React.useContext(backgroundContext);
+  const [popup, setPopup] = useState(false);
   const [loading, setLoading] = useState(false);
   const [modalDta, setmodalData] = useState();
-  console.log(modalDta);
   const { refetch } = useWishlist();
   const { reload } = useCart();
 
@@ -25,13 +25,15 @@ const Hover = ({ data }) => {
   const navigate = useNavigate();
 
   const handleview = (id) => {
-    fetch(`http://localhost:3000/product/edit-product/${id}`)
-      .then((res) => res.json())
-      .then((result) => {
-        setPopup(true);
-        setLoading(true);
-        setmodalData(result);
-      });
+    // console.log(id);
+    // fetch(`https://e-trade-server.vercel.app/product/edit-product/${id}`)
+    //   .then((res) => res.json())
+    //   .then((result) => {
+    //     setPopup(true);
+    //     setLoading(true);
+    //     setmodalData(result);
+    //   });
+    setPopup(true);
   };
   const handleWishlit = () => {
     if (!user) {
@@ -52,7 +54,7 @@ const Hover = ({ data }) => {
       ratting: data.ratting,
       user: user.email,
     };
-    fetch("http://localhost:3000/wishlist/post-wishlistItems", {
+    fetch("https://e-trade-server.vercel.app/wishlist/post-wishlistItems", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -74,7 +76,7 @@ const Hover = ({ data }) => {
 
   const handleCart = () => {
     if (!user) {
-      navigate("/login");
+      navigate("/LoginRegister");
     }
 
     const newCart = {
@@ -87,7 +89,7 @@ const Hover = ({ data }) => {
       vendorName: data?.vendorName,
     };
 
-    fetch("http://localhost:3000/cart/postCart", {
+    fetch("https://e-trade-server.vercel.app/cart/postCart", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -101,7 +103,6 @@ const Hover = ({ data }) => {
       })
       .then((items) => {
         console.log(items);
-        toast.success("Successfully added to cart");
       });
   };
 
@@ -135,8 +136,9 @@ const Hover = ({ data }) => {
       <Modal
         popup={popup}
         setPopup={setPopup}
-        data={modalDta}
-        loading={loading}
+        // data={modalDta}
+        // loading={loading}
+        data={data}
       />
     </div>
   );
