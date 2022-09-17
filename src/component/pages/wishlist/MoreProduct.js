@@ -7,7 +7,7 @@ const Moreproduct = ({ category }) => {
   const [moreProduct, setMorePorduct] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    fetch(`http://localhost:3000/?category=${category}`)
+    fetch(`https://e-trade-server.vercel.app/?category=${category}`)
       .then((res) => res.json())
       .then((data) => {
         setMorePorduct(data);

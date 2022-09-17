@@ -11,7 +11,7 @@ const Electical = () => {
   const { category } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/?category=${category}`)
+    fetch(`https://e-trade-server.vercel.app/?category=${category}`)
       .then((res) => res.json())
       .then((data) => {
         setProdcut(data);

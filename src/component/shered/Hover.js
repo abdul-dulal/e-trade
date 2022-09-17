@@ -26,7 +26,7 @@ const Hover = ({ data }) => {
 
   const handleview = (id) => {
     // console.log(id);
-    // fetch(`http://localhost:3000/product/edit-product/${id}`)
+    // fetch(`https://e-trade-server.vercel.app/product/edit-product/${id}`)
     //   .then((res) => res.json())
     //   .then((result) => {
     //     setPopup(true);
@@ -54,7 +54,7 @@ const Hover = ({ data }) => {
       ratting: data.ratting,
       user: user.email,
     };
-    fetch("http://localhost:3000/wishlist/post-wishlistItems", {
+    fetch("https://e-trade-server.vercel.app/wishlist/post-wishlistItems", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -89,7 +89,7 @@ const Hover = ({ data }) => {
       vendorName: data?.vendorName,
     };
 
-    fetch("http://localhost:3000/cart/postCart", {
+    fetch("https://e-trade-server.vercel.app/cart/postCart", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

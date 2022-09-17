@@ -9,7 +9,7 @@ const WishlistTable = ({ data, refetch }) => {
 
   const removeItems = (_id) => {
     console.log(_id);
-    fetch(`http://localhost:3000/wishlist/delete-item/${_id}`, {
+    fetch(`https://e-trade-server.vercel.app/wishlist/delete-item/${_id}`, {
       method: "DELETE",
     })
       .then((res) => {
