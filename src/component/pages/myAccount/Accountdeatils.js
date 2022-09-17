@@ -19,16 +19,13 @@ const Accountdetails = () => {
       phone: data.phone,
       name: data.name,
     };
-    fetch(
-      `https://e-trade-server.vercel.app/user/put-userInfo/${data?.email}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newUser),
-      }
-    )
+    fetch(`http://localhost:3000/user/put-userInfo/${data?.email}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    })
       .then((res) => {
         toast("successfylly added");
 

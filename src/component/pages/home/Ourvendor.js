@@ -15,7 +15,7 @@ const Vendorslider = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("https://e-trade-server.vercel.app/vendor/vendor")
+    fetch("http://localhost:3000/vendor/vendor")
       .then((res) => res.json())
       .then((data) => {
         setVendors(data);
