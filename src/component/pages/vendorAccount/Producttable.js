@@ -10,19 +10,19 @@ import Loading from "../../shered/Loading";
 const Producttable = ({ product }) => {
   const [popup, setPopup] = useState(false);
   const [editProduct, setEditproduct] = useState();
-
   const { img, price, price2, title, _id } = product;
   const [user] = useAuthState(auth);
   const { deleteRetch, isLoading } = useUploadproduct(user);
   const handleEdit = (id) => {
-    fetch(`https://e-trade-server.vercel.app/product/edit-product/${id}`)
+    console.log(id);
+    fetch(`http://localhost:3000/product/edit-product/${id}`)
       .then((res) => res.json())
       .then((data) => setEditproduct(data));
     setPopup(true);
   };
 
   const handleRemove = () => {
-    fetch(`https://e-trade-server.vercel.app/product/delete-product/${_id}`, {
+    fetch(`http://localhost:3000/product/delete-product/${_id}`, {
       method: "DELETE",
     })
       .then((res) => {

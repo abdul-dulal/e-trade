@@ -9,8 +9,8 @@ const CartTable = ({ info, total, setTotal }) => {
   total = increment * price;
 
   setTotal(total);
-  const removeItems = (_id) => {
-    fetch(`https://e-trade-server.vercel.app/cart/deleteCart-item/${_id}`, {
+  const removeItems = (id) => {
+    fetch(`http://localhost:3000/cart/deleteCart-item/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -35,7 +35,7 @@ const CartTable = ({ info, total, setTotal }) => {
         <td>
           <div className="space-x-4 text-xl font-bold text-[#6B7280] border-2 h-10    w-28  flex items-center justify-center">
             <button
-              onClick={() => [setIncrement(increment - 1)]}
+              onClick={() => setIncrement(increment - 1)}
               className={`cursor-pointer  ${
                 increment <= 1 ? "cursor-not-allowed" : ""
               }`}
@@ -45,7 +45,7 @@ const CartTable = ({ info, total, setTotal }) => {
             <span className="text-xl">{increment}</span>
             <button
               disabled={increment >= 10}
-              onClick={() => [setIncrement(increment + 1)]}
+              onClick={() => setIncrement(increment + 1)}
               className={`cursor-pointer ${
                 increment >= 10 ? "cursor-not-allowed" : ""
               }`}

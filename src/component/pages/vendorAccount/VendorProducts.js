@@ -1,4 +1,6 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../FirebaseInit";
 import useUploadproduct from "../../hooks/useUploadProduct";
@@ -7,12 +9,16 @@ import Producttable from "./Producttable";
 
 const VendorProducts = () => {
   const [popup, setPopup] = useState(false);
-
   const [searchTerm, setsearchTerm] = useState();
   const [user] = useAuthState(auth);
-
   const { product } = useUploadproduct(user);
-
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       `http://localhost:3000/product/search/${searchTerm} && ${user.email}`
+  //     )
+  //     .then((res) => console.log(res.data));
+  // }, [searchTerm]);
   return (
     <div className="container">
       <div className=" my-5 flex flex-wrap justify-between  ">
@@ -31,27 +37,7 @@ const VendorProducts = () => {
           Add Product
         </button>
       </div>
-      {/* <div className="">
-        {uploadProduct
-          .filter((val) => {
-            if (searchTerm == "") {
-              return val;
-            } else if (
-              val.title?.toLowerCase().includes(searchTerm?.toLowerCase())
-            ) {
-              return val;
-            }
-          })
-          .map((val) => {
-            return (
-              <Producttable
-                key={val._id}
-                product={val}
-                searchTerm={searchTerm}
-              />
-            );
-          })}
-      </div> */}
+
       <div class="overflow-x-auto mt-4">
         <table class="table w-full">
           <thead>

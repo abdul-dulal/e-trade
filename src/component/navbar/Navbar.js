@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import wishlist from "../../assets/icon/wishlist.png";
 import cart from "../../assets/icon/cart.png";
@@ -11,6 +11,7 @@ import logo from "../../assets/demo-store-logo-1634113310.jpg";
 import auth from "../../FirebaseInit";
 import Logout from "../shered/Logout";
 import Cartmodal from "../pages/cart/CartModal";
+import clickOutside from "click-outside";
 
 const Navbar = () => {
   const [hide, setHide] = useState(true);
@@ -22,7 +23,18 @@ const Navbar = () => {
   const handleHide = () => {
     setHide(!hide);
   };
+  var container = document.querySelector(".container");
 
+  const al = () => {
+    clickOutside(container, function (e) {
+      console.log(e);
+      setCartmodal(false);
+    });
+  };
+
+  setTimeout(function () {
+    al();
+  }, 200);
   return (
     <nav>
       <div className="flex container justify-between items-center lg:h-16 md:h-16 h-6 invisible md:visible lg:visible  ">
@@ -110,7 +122,7 @@ const Navbar = () => {
                 />
               </li>
               <p className="absolute bottom-5 left-4  bg-gray-900 text-gray-100 w-5 h-5 rounded-full flex items-center justify-center">
-                {cartInfo ? cartInfo.length : "0"}
+                {cartInfo ? cartInfo?.length : "0"}
               </p>
             </div>
             <div className="dropdown dropdown-end ">

@@ -4,26 +4,27 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../FirebaseInit";
+import axios from "axios";
 
 const Setting = () => {
   const { register, handleSubmit } = useForm();
   const [user] = useAuthState(auth);
   const [storeName, setStoreName] = useState();
-  console.log(storeName?.user);
+
   useEffect(() => {
-    fetch(`https://e-trade-server.vercel.app/vendor/user/${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => setStoreName(data));
+    axios
+      .get(`http://localhost:3000/vendor/user/${user?.email}`)
+      .then((res) => setStoreName(res.data));
   }, [user?.email]);
 
   const imgStoreKey = "62b824b8fcaa7767525638a0ce8e3079";
 
   const onSubmit = (data) => {
+    console.log(data.store);
     const img = data?.img[0];
     const formData = new FormData();
     formData.append("image", img);
-    const url = `https://api.imgbb.com/1/upload?key=${imgStoreKey}`;
-    fetch(url, {
+    fetch(`https://api.imgbb.com/1/upload?key=${imgStoreKey}`, {
       method: "POST",
       body: formData,
     })
@@ -34,10 +35,9 @@ const Setting = () => {
             img: result.data.url,
             name: data.store,
           };
-          console.log(store);
 
           fetch(
-            `https://e-trade-server.vercel.app/vendor/update-vendorInfo/${storeName.user}`,
+            `http://localhost:3000/vendor/update-vendorInfo/${storeName.user}`,
             {
               method: "PUT",
               headers: {
@@ -47,12 +47,10 @@ const Setting = () => {
             }
           )
             .then((response) => {
-              toast("Prodcut successfully Update..");
+              toast("Vendor Info successfully Update..");
               response.json();
             })
-            .then((data) => {
-              console.log("Success:", data);
-            });
+            .then((data) => {});
         }
       });
   };

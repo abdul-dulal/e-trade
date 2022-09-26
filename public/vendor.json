@@ -1,0 +1,31 @@
+[
+  {
+    "name": "e-shop-mall",
+    "img": "http://res.cloudinary.com/mhshuvoit/image/upload/v1649414569/ecommerce-app/venodr-images/1649414565889-photo-camera.png.png",
+    "category": "electronic",
+    "user": "abcd@gmail.com",
+    "follower": 6
+  },
+  {
+    "name": "Food Zone",
+    "img": "http://res.cloudinary.com/mhshuvoit/image/upload/v1649434284/ecommerce-app/venodr-images/1649434282040-food.png.png",
+    "category": "food",
+    "user": "xyz@gmail.com",
+    "follower": 4
+  },
+  {
+    "name": "Gril`s Shop",
+    "img": "http://res.cloudinary.com/mhshuvoit/image/upload/v1649436059/ecommerce-app/venodr-images/1649436056182-fashion.png.png",
+    "category": "women",
+    "user": "dulal@gmail.com",
+    "follower": 7
+  },
+  {
+    "name": "Fashion Shop",
+    "img": "http://res.cloudinary.com/mhshuvoit/image/upload/v1649572823/ecommerce-app/venodr-images/1649572820815-shirts.png.png",
+    "category": "men",
+    "user": "def@gmail.com",
+    "follower": 8
+  },
+  { "name": "Ganja Shop", "img": "" }
+]

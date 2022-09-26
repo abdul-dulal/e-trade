@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
 const Filter = () => {
+  const [Category, setCategory] = useState("");
+
   const [accessories, setaccessories] = useState("");
   const [fashion, setFashion] = useState("");
   const [food, setFood] = useState("");
@@ -14,13 +16,12 @@ const Filter = () => {
   const [style, setStyle] = useState("");
   const [toys, setToys] = useState("");
   const [searchTerm, setSearchTerm] = useState(false);
-  const [filter, setFilter] = useState(false);
   const [hide, setHide] = useState(false);
   return (
     <div className="lg:hidden md:hidden block">
       <div className="">
         <p
-          className="text-2xl text-purple-600 font-bold"
+          className="text-2xl text-purple-600 font-bold cursor-pointer"
           onClick={() => setHide(!hide)}
         >
           {hide ? "-" : "+"} Filter
@@ -40,7 +41,10 @@ const Filter = () => {
                 <label className="cursor-pointer">
                   <input
                     type="checkbox"
-                    onClick={() => setaccessories(!accessories)}
+                    onClick={() => {
+                      setaccessories(!accessories);
+                      setCategory("accessories");
+                    }}
                   />
                   <span className="font-semibold ml-2">
                     Electronic Accessories

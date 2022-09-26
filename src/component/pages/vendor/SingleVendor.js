@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { RiChatFollowUpFill } from "react-icons/ri";
 
 import { toast } from "react-toastify";
@@ -9,48 +9,50 @@ import VendorProduct from "./VendorProduct";
 import Breadcumb from "../../shered/Breadcumb";
 import Profile from "./VendorProfile";
 import useFollower from "../../hooks/useFollow";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../FirebaseInit";
 const Singlevendor = () => {
   const [profile, setprofile] = useState("profile");
   const [follow, setFollow] = useState(false);
   const { id } = useParams();
-
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
   const { followers, followerRefetch } = useFollower(id);
   let follower = followers?.follower;
+
   const handlecFollower = () => {
     const newFollower = parseFloat(follower) + 1;
     const updateFollwer = { follower: newFollower };
-    fetch(
-      `https://e-trade-server.vercel.app/vendor/update-follwer/${followers?._id}`,
-      {
+    if (user) {
+      fetch(`http://localhost:3000/vendor/update-follwer/${followers?._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(updateFollwer),
-      }
-    )
-      .then((response) => {
-        followerRefetch();
-        toast("Thanks To Following");
-        response.json();
       })
-      .then((data) => {});
-    setFollow(!follow);
+        .then((response) => {
+          followerRefetch();
+          toast("Thanks To Following");
+          response.json();
+        })
+        .then((data) => {});
+      setFollow(!follow);
+    } else {
+      navigate("/loginregister");
+    }
   };
 
   const handleunfollow = () => {
     const newFollower = parseFloat(follower) - 1;
     const updateFollwer = { follower: newFollower };
-    fetch(
-      `https://e-trade-server.vercel.app/vendor/update-follwer/${followers?._id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updateFollwer),
-      }
-    )
+    fetch(`http://localhost:3000/vendor/update-follwer/${followers?._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updateFollwer),
+    })
       .then((response) => response.json())
       .then((data) => {
         followerRefetch();
@@ -74,7 +76,12 @@ const Singlevendor = () => {
           <div>
             <h2 className="text-xl font-semibold">{followers?.name}</h2>
             <p>
-              <span>{followers?.follower}</span>
+              <span>
+                {followers?.follower}{" "}
+                <span>
+                  {followers?.follower > 0 ? "Followers" : "Follower"}
+                </span>
+              </span>
             </p>
           </div>
           <div>
@@ -98,16 +105,20 @@ const Singlevendor = () => {
         <div className="flex justify-center space-x-4 mt-10 ">
           <button
             onClick={() => setprofile("profile")}
-            className={`uppercase  py-2 px-6 text-black font-semibold ${
-              profile === "profile" ? "bg-purple-600 rounded-md text-white" : ""
+            className={`uppercase  py-2 px-6  font-semibold ${
+              profile === "profile"
+                ? "bg-primary rounded-md text-white"
+                : "text-black"
             }`}
           >
             Profile
           </button>
           <button
             onClick={() => setprofile("product")}
-            className={`uppercase  py-2 px-6 text-black font-semibold ${
-              profile === "product" ? "bg-purple-600 rounded-md text-white" : ""
+            className={`uppercase  py-2 px-6  font-semibold ${
+              profile === "product"
+                ? "bg-primary rounded-md text-white"
+                : "text-black"
             }`}
           >
             Product

@@ -8,7 +8,6 @@ const Cart = () => {
   const { cartInfo, refetch } = useCart();
   const [total, setTotal] = useState([]);
   const navigate = useNavigate();
-
   return (
     <div>
       <div>
@@ -40,7 +39,7 @@ const Cart = () => {
         <div className="container flex justify-between py-10">
           <button
             onClick={() => navigate("/shop")}
-            className="uppercase bg-gray-100 text-black rounded-full hover:bg-purple-600 hover:text-white h-10 w-64 k"
+            className="uppercase bg-gray-100 text-black rounded-full hover:bg-primary hover:text-white h-10 w-64 k"
           >
             contiune shoping
           </button>
@@ -58,24 +57,22 @@ const Cart = () => {
                 <input
                   type="text"
                   placeholder="Code: e-shop"
-                  className="  border border-gray-400 focus:outline-none h-10 placeholder:text-purple-600 px-1 "
+                  className="  border border-gray-400 focus:outline-none h-10 placeholder:text-black px-1 "
                 />
-                <button className="h-10 w-40 rounded-sm bg-purple-600 text-white hover:bg-gray-600">
+                <button className="h-10 w-40 rounded-sm bg-primary text-white hover:bg-gray-600">
                   Apply Coupon
                 </button>
               </div>
               <div className="flex justify-between py-3">
-                <h2 className="text-2xl text-purple-600 font-semibold">
+                <h2 className="text-2xl text-black font-semibold">
                   Grand Total
                 </h2>
-                <p className="text-2xl text-purple-600 font-semibold">
-                  {total}
-                </p>
+                <p className="text-2xl text-black font-semibold">{total}</p>
               </div>
               <Link
                 to="/checkout"
                 state={{ total, ischeck: true }}
-                className="bg-purple-600 mt-4 text-white py-3 px-10  rounded-sm w-full
+                className="bg-primary mt-4 text-white py-3 px-10  rounded-sm w-full
                 text-xl hover:bg-gray-600 "
               >
                 Proced To Checkout

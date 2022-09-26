@@ -7,7 +7,6 @@ import NewArrival from "./NewArrival";
 const TrandingProduct = () => {
   const [showProduct, setShowproduct] = useState("best");
   const [popup] = React.useContext(backgroundContext);
-  console.log(popup);
 
   return (
     <div className={`my-16 `}>

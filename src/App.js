@@ -26,13 +26,14 @@ import VendorDashboard from "./component/pages/vendorAccount/VendorDashboard";
 import VendorProducts from "./component/pages/vendorAccount/VendorProducts";
 import Setting from "./component/pages/vendorAccount/Setting";
 import Checkout from "./component/pages/checkout/Checkout";
+import Payment from "./component/pages/payment/Payment";
 export const backgroundContext = React.createContext();
 function App() {
-  const [popup, setPopup] = useState(false);
+  const [popupWith, setPopupWith] = useState(false);
   return (
-    <div className={`${popup ? "bg-gray-100 text-gray-600" : ""}`}>
+    <div className={`${popupWith ? " bg-gray-100 shadow" : ""}`}>
       <Navbar />
-      <backgroundContext.Provider value={[popup, setPopup]}>
+      <backgroundContext.Provider value={[popupWith, setPopupWith]}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="home" element={<Home />} />
@@ -41,6 +42,7 @@ function App() {
           <Route path="cart" element={<Cart />} />
           <Route path="wishlist" element={<Wishlist />} />
           <Route path="checkout" element={<Checkout />} />
+          <Route path="payment" element={<Payment />} />
 
           <Route
             path="/product-details/:id"
@@ -62,7 +64,6 @@ function App() {
             <Route path="products" element={<VendorProducts />} />
             <Route path="settings" element={<Setting />} />
           </Route>
-          <Route path="login" element={<Login />} />
         </Routes>
       </backgroundContext.Provider>
       <Footer />

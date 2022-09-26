@@ -14,27 +14,14 @@ import useWishlist from "../hooks/useWishlist";
 import { backgroundContext } from "../../App";
 
 const Hover = ({ data }) => {
-  // const [popup, setPopup] = React.useContext(backgroundContext);
   const [popup, setPopup] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [modalDta, setmodalData] = useState();
+  const [popupWith, setPopupWith] = React.useContext(backgroundContext);
   const { refetch } = useWishlist();
   const { reload } = useCart();
 
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
-  const handleview = (id) => {
-    // console.log(id);
-    // fetch(`https://e-trade-server.vercel.app/product/edit-product/${id}`)
-    //   .then((res) => res.json())
-    //   .then((result) => {
-    //     setPopup(true);
-    //     setLoading(true);
-    //     setmodalData(result);
-    //   });
-    setPopup(true);
-  };
   const handleWishlit = () => {
     if (!user) {
       navigate("/LoginRegister");
@@ -54,7 +41,7 @@ const Hover = ({ data }) => {
       ratting: data.ratting,
       user: user.email,
     };
-    fetch("https://e-trade-server.vercel.app/wishlist/post-wishlistItems", {
+    fetch("http://localhost:3000/wishlist/post-wishlistItems", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -89,7 +76,7 @@ const Hover = ({ data }) => {
       vendorName: data?.vendorName,
     };
 
-    fetch("https://e-trade-server.vercel.app/cart/postCart", {
+    fetch("http://localhost:3000/cart/postCart", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -113,8 +100,11 @@ const Hover = ({ data }) => {
         }`}
       >
         <img
-          onClick={() => handleview(data._id)}
           src={view}
+          onClick={() => {
+            setPopup(true);
+            setPopupWith(true);
+          }}
           className="p-1 bg-white rounded-full  cursor-pointer"
           alt=""
         />
@@ -133,13 +123,7 @@ const Hover = ({ data }) => {
         />
       </div>
 
-      <Modal
-        popup={popup}
-        setPopup={setPopup}
-        // data={modalDta}
-        // loading={loading}
-        data={data}
-      />
+      <Modal popup={popup} setPopup={setPopup} data={data} />
     </div>
   );
 };

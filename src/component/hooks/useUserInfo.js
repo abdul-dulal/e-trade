@@ -10,9 +10,9 @@ const useUserInfo = () => {
     data: userInfo,
     refetch: userRealod,
   } = useQuery("result", () =>
-    fetch(
-      `https://gentle-inlet-09370.herokuapp.com/get-user/${user?.email}`
-    ).then((res) => res.json())
+    fetch(`http://localhost:3000/vendor/user/${user?.email}`).then((res) =>
+      res.json()
+    )
   );
   if (isLoading) {
     return <Loading />;

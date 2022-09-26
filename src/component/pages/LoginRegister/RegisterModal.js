@@ -14,7 +14,7 @@ const RegisterModal = ({ openRegister, setOpenRegister }) => {
   const [verified, setVerified] = useState(false);
   const [customer, setcustomer] = useState("customer");
   const [vendor, setvendor] = useState("customer");
-  console.log(vendor);
+
   const {
     register,
     handleSubmit,
@@ -32,10 +32,11 @@ const RegisterModal = ({ openRegister, setOpenRegister }) => {
       const newUser = {
         img: "",
         status: vendor,
+        follower: 0,
         user: data.email,
         name: data.store,
       };
-      fetch("https://e-trade-server.vercel.app/vendor/vendor", {
+      fetch("http://localhost:3000/vendor/vendor", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

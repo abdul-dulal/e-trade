@@ -26,7 +26,7 @@ const WishlistItemDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`https://e-trade-server.vercel.app/wishlist/wishlist-items/${id}`)
+      .get(`http://localhost:3000/wishlist/wishlist-items/${id}`)
       .then((res) => {
         setData(res.data);
         setLoading(true);

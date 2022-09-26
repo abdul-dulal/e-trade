@@ -11,7 +11,7 @@ const Electical = () => {
   const { category } = useParams();
 
   useEffect(() => {
-    fetch(`https://e-trade-server.vercel.app/?category=${category}`)
+    fetch(`http://localhost:3000/product/get-Bycategory?category=${category}`)
       .then((res) => res.json())
       .then((data) => {
         setProdcut(data);
@@ -26,15 +26,15 @@ const Electical = () => {
           <div className="flex lg:justify-between justify-center gap-8 flex-wrap  container mt-10  overflow-hidden ">
             {products.map((product) => (
               <div className="parent " key={product._id}>
-                <div className=" ">
+                <div className={` rounded-md  shadow w-[300px] h-96 border-2 `}>
                   <img
                     src={product.img}
-                    className="  h-60 pt-3 block mx-auto hover:scale-110 duration-500"
+                    className="  h-60 pt-3 block mx-auto rounded-lg hover:scale-110 duration-500"
                     alt=""
                   />
 
-                  <div class=" py-4 px-6  text-base font-semibold ">
-                    <h2 class="">{product.title}</h2>
+                  <div className=" py-4 px-6  text-base font-semibold ">
+                    <h2 className="">{product.title}</h2>
 
                     <div className="flex gap-1">
                       <p>${product.price}</p>

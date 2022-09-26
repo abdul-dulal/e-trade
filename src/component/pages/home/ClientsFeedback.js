@@ -16,12 +16,10 @@ const ClientsFeedback = () => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    axios
-      .get(`https://e-trade-server.vercel.app/review/all-review`)
-      .then((res) => {
-        setReviews(res.data);
-        setLoading(true);
-      });
+    axios.get(`http://localhost:3000/review/all-review`).then((res) => {
+      setReviews(res.data);
+      setLoading(true);
+    });
   }, []);
   return (
     <div className="container  bg-gray-200 mb-20">

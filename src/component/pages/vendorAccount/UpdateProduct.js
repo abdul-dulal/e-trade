@@ -1,30 +1,37 @@
-import React, { useEffect, useState } from "react";
-import { useQuill } from "react-quilljs";
+import React from "react";
 import "quill/dist/quill.snow.css";
 import { useForm } from "react-hook-form";
+
 import { BsFillCloudArrowUpFill } from "react-icons/bs";
-import { toast } from "react-toastify";
+import { useState } from "react";
+import { useEffect } from "react";
+import { useQuill } from "react-quilljs";
+import useUploadproduct from "../../hooks/useUploadProduct";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../FirebaseInit";
-import useUploadproduct from "../../hooks/useUploadProduct";
+import { toast } from "react-toastify";
 const AddProduct = ({ popup, setPopup, editProduct }) => {
-  const [value, setvalue] = useState({
-    name: editProduct?.title,
-    price: editProduct?.price,
-  });
-
+  const { quill, quillRef } = useQuill();
+  const [value, setValue] = useState();
+  const { register, handleSubmit, reset } = useForm();
   const [user] = useAuthState(auth);
   const { deleteRetch } = useUploadproduct(user);
-  const email = user?.email;
-  const { register, handleSubmit, reset } = useForm();
+
+  useEffect(() => {
+    if (quill) {
+      quill.on("text-change", (delta, oldDelta, source) => {
+        setValue(quillRef.current.firstChild.innerHTML);
+      });
+    }
+  }, [quill]);
 
   const imgStoreKey = "62b824b8fcaa7767525638a0ce8e3079";
+
   const onSubmit = (data) => {
-    console.log(data);
     const img = data?.img[0];
     const formData = new FormData();
     formData.append("image", img);
-    const url = ``;
+    const url = `https://api.imgbb.com/1/upload?key=${imgStoreKey}`;
     fetch(url, {
       method: "POST",
       body: formData,
@@ -36,21 +43,23 @@ const AddProduct = ({ popup, setPopup, editProduct }) => {
             img: result.data.url,
             title: data.name,
             category: data.option,
-            user: email,
+            user: user.email,
             tags: data.tag,
             price: data.regular,
             price2: data.sale,
           };
-
-          fetch("", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(products),
-          })
+          fetch(
+            `http://localhost:3000/product/update_product/${editProduct._id}`,
+            {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(products),
+            }
+          )
             .then((response) => {
-              toast("Prodcut successfully added..");
+              toast("Prodcut successfully update..");
               deleteRetch();
               return response.json();
             })
@@ -76,7 +85,6 @@ const AddProduct = ({ popup, setPopup, editProduct }) => {
                   X
                 </button>
               </div>
-              {/* {editProduct && ( */}
               <form onSubmit={handleSubmit(onSubmit)}>
                 <p className="border-solid border border-gray-200"></p>
                 <div className="flex flex-wrap justify-between my-5">
@@ -93,7 +101,7 @@ const AddProduct = ({ popup, setPopup, editProduct }) => {
                     <label className="block">Product Name</label>
                     <input
                       type="text"
-                      value={value.name}
+                      defaultValue={editProduct?.title}
                       {...register("name")}
                       className=" md:w-72 w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     />
@@ -105,6 +113,7 @@ const AddProduct = ({ popup, setPopup, editProduct }) => {
                     <label className="block">REGULAR PRICE</label>
                     <input
                       type="number"
+                      defaultValue={editProduct?.price}
                       {...register("regular")}
                       className=" md:w-72 w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     />
@@ -113,7 +122,8 @@ const AddProduct = ({ popup, setPopup, editProduct }) => {
                     <label className="block">SALE PRICE</label>
                     <input
                       type="number"
-                      {...register("sale")}
+                      defaultValue={editProduct?.price2}
+                      {...register("selling")}
                       className=" md:w-72 w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     />
                   </div>
@@ -150,7 +160,9 @@ const AddProduct = ({ popup, setPopup, editProduct }) => {
                     />
                   </div>
                 </div>
-
+                <div style={{ width: "100%", height: 50 }}>
+                  <div ref={quillRef} />
+                </div>
                 <br />
                 <button
                   type="submit"

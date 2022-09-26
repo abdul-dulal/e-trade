@@ -1,19 +1,24 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../FirebaseInit";
 import useCart from "../../hooks/useCart";
-import useUserInfo from "../../hooks/useUserInfo";
 import Breadcumb from "../../shered/Breadcumb";
-import Payment from "../payment/Payment";
 
 const Checkout = () => {
   const { cartInfo } = useCart();
   const [user] = useAuthState(auth);
+  const [userInfo, setUserInfo] = useState();
   const location = useLocation();
-  const { userInfo } = useUserInfo();
+
   const navigate = useNavigate();
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3000/user/get_userInfo/${user?.email}`)
+      .then((res) => setUserInfo(res.data));
+  }, [user?.email]);
 
   const {
     register,
@@ -26,9 +31,22 @@ const Checkout = () => {
     price.reduce((x, y) => {
       return x + y;
     });
+
   const onSubmit = (data) => {
-    console.log("click");
-    navigate("/checkout-method");
+    const newUser = {
+      phone: data.phone,
+      name: data.name,
+      user: user.email,
+      city: data.city,
+      state: data.state,
+      country: data.country,
+      address: data.address,
+      zip: data.zip,
+    };
+    navigate("/payment", { state: { totalPrice, cartInfo } });
+    if (!userInfo) {
+      axios.post("http://localhost:3000/user/post-userInfo", { newUser });
+    }
   };
 
   return (
@@ -46,6 +64,8 @@ const Checkout = () => {
                   <label className="block my-2"> Name</label>
                   <input
                     type="text"
+                    defaultValue={user?.displayName}
+                    readOnly
                     {...register("fname", {
                       required: {
                         value: true,
@@ -54,34 +74,17 @@ const Checkout = () => {
                     })}
                     className=" md:w-96 w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   />
-                  <label>
-                    {errors.fname?.type === "required" && (
-                      <p className="label-text-alt text-red-500 text-xl">
-                        {errors.fname.message}
-                      </p>
-                    )}
-                  </label>
                 </div>
 
                 <div>
                   <label className="block my-2">Email</label>
                   <input
                     type="text"
-                    {...register("email", {
-                      required: {
-                        value: true,
-                        message: "Please Enter Email",
-                      },
-                    })}
+                    required={userInfo}
+                    value={user?.email}
+                    {...register("email", {})}
                     className=" md:w-96 w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   />
-                  <label>
-                    {errors.email?.type === "required" && (
-                      <p className="label-text-alt text-red-500 text-xl">
-                        {errors.email.message}
-                      </p>
-                    )}
-                  </label>
                 </div>
               </div>
               <div className="flex gap-10 my-3">
@@ -89,42 +92,21 @@ const Checkout = () => {
                   <label className="block my-2">Phone</label>
                   <input
                     type="text"
-                    {...register("phone", {
-                      required: {
-                        value: true,
-                        message: "Please Enter Phone number",
-                      },
-                    })}
+                    required={userInfo}
+                    defaultValue={userInfo?.phone}
+                    {...register("phone", {})}
                     className=" md:w-96 w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   />
-                  <label>
-                    {errors.phone?.type === "required" && (
-                      <p className="label-text-alt text-red-500 text-xl">
-                        {errors.phone.message}
-                      </p>
-                    )}
-                  </label>
                 </div>
                 <div>
                   <label className="block my-2">Zip Code</label>
                   <input
                     type="text"
-                    {...register("zip", {
-                      required: {
-                        value: true,
-                        message: "Please Enter zip code",
-                      },
-                    })}
-                    defaultValue={userInfo ? userInfo.zip : ""}
+                    required={userInfo}
+                    defaultValue={userInfo?.zip}
+                    {...register("zip", {})}
                     className=" md:w-96 w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   />
-                  <label>
-                    {errors.zip?.type === "required" && (
-                      <p className="label-text-alt text-red-500 text-xl">
-                        {errors.zip.message}
-                      </p>
-                    )}
-                  </label>
                 </div>
               </div>
               <div className="flex gap-10 my-3">
@@ -132,28 +114,17 @@ const Checkout = () => {
                   <label className="block my-2">City</label>
                   <input
                     type="text"
-                    {...register("city", {
-                      required: {
-                        value: true,
-                        message: "Please Enter city",
-                      },
-                    })}
-                    defaultValue={userInfo ? userInfo.city : ""}
+                    required={userInfo}
+                    defaultValue={userInfo?.city}
+                    {...register("city", {})}
                     className=" md:w-96 w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   />
-                  <label>
-                    {errors.city?.type === "required" && (
-                      <p className="label-text-alt text-red-500 text-xl">
-                        {errors.city.message}
-                      </p>
-                    )}
-                  </label>
                 </div>
                 <div>
                   <label className="block my-2">Street Address</label>
                   <input
                     type="text"
-                    defaultValue={userInfo ? userInfo.address : ""}
+                    defaultValue={userInfo?.address}
                     className=" md:w-96 w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   />
                 </div>
@@ -162,30 +133,19 @@ const Checkout = () => {
                 <div>
                   <label className="block my-2">State</label>
                   <input
-                    {...register("state", {
-                      required: {
-                        value: true,
-                        message: "Please Enter state",
-                      },
-                    })}
+                    defaultValue={userInfo?.state}
+                    {...register("state", {})}
                     type="text"
-                    defaultValue={userInfo ? userInfo.state : ""}
                     className=" md:w-96 w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   />
-                  <label>
-                    {errors.state?.type === "required" && (
-                      <p className="label-text-alt text-red-500 text-xl">
-                        {errors.state.message}
-                      </p>
-                    )}
-                  </label>
                 </div>
                 <div>
                   <label className="block my-2">Country</label>
                   <input
                     type="text"
+                    required={userInfo}
                     {...register("country")}
-                    defaultValue={userInfo ? userInfo.country : ""}
+                    defaultValue={userInfo?.country}
                     className=" md:w-96 w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   />
                   <label>
@@ -237,7 +197,6 @@ const Checkout = () => {
           </div>
         </form>
       </div>
-      <Payment total={totalPrice} />
     </div>
   );
 };

@@ -10,11 +10,12 @@ import {
   LinkedinIcon,
   TwitterIcon,
 } from "react-share";
-import ReactImageZoom from "react-image-zoom";
 import Rattings from "./Ratting";
-import Loading from "./Loading";
-const Modal = ({ popup, setPopup, data, loading }) => {
+import { backgroundContext } from "../../App";
+
+const Modal = ({ popup, setPopup, data }) => {
   const [increment, setIncrement] = useState(1);
+  const [popupWith, setPopupWith] = React.useContext(backgroundContext);
   const fbShare = "https://www.facebook.com/";
   const twShare = "https://twitter.com/";
   const lkShare = "https://www.linkedin.com/feed/";
@@ -32,7 +33,10 @@ const Modal = ({ popup, setPopup, data, loading }) => {
                   <img
                     src={remove}
                     alt=""
-                    onClick={() => setPopup(false)}
+                    onClick={() => {
+                      setPopup(false);
+                      setPopupWith(false);
+                    }}
                     className="cursor-pointer text-2xl font-semibold text-gray-400 "
                   />
                 </div>
