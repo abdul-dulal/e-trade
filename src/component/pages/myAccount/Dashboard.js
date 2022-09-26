@@ -11,7 +11,7 @@ const Dashboard = () => {
 
   const navigate = useNavigate();
   useEffect(() => {
-    fetch(`http://localhost:3000/vendor/get-user/${user?.email}`)
+    fetch(`https://e-trade-server.vercel.app/vendor/get-user/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setVendor(data));
     setLoading(true);

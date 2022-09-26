@@ -7,7 +7,9 @@ const Newarrival = () => {
   const [products, setproduct] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    fetch("http://localhost:3000/product/get-featured?highlights=new")
+    fetch(
+      "https://e-trade-server.vercel.app/product/get-featured?highlights=new"
+    )
       .then((res) => res.json())
       .then((data) => {
         setproduct(data);
