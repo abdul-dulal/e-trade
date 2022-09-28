@@ -23,7 +23,7 @@ const Navbar = () => {
   const handleHide = () => {
     setHide(!hide);
   };
-  var container = document.querySelector(".container");
+  var container = document.querySelector("#container");
 
   const al = () => {
     clickOutside(container, function (e) {
@@ -32,12 +32,13 @@ const Navbar = () => {
     });
   };
 
-  setTimeout(function () {
-    al();
-  }, 200);
+  al();
   return (
     <nav>
-      <div className="flex container justify-between items-center lg:h-16 md:h-16 h-6 invisible md:visible lg:visible  ">
+      <div
+        id="container"
+        className="flex container justify-between items-center lg:h-16 md:h-16 h-6 invisible md:visible lg:visible  "
+      >
         <div>
           <ul className="flex gap-8 items-center">
             <li className="text-3xl">

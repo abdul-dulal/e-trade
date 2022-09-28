@@ -11,7 +11,7 @@ const Dashboard = () => {
 
   const navigate = useNavigate();
   useEffect(() => {
-    fetch(`https://e-trade-server.vercel.app/vendor/get-user/${user?.email}`)
+    fetch(`https://eduworld-backend.vercel.app/vendor/get-user/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setVendor(data));
     setLoading(true);

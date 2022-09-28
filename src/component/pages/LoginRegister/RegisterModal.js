@@ -36,7 +36,7 @@ const RegisterModal = ({ openRegister, setOpenRegister }) => {
         user: data.email,
         name: data.store,
       };
-      fetch("https://e-trade-server.vercel.app/vendor/vendor", {
+      fetch("https://eduworld-backend.vercel.app/vendor/vendor", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

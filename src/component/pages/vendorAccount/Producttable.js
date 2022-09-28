@@ -15,14 +15,14 @@ const Producttable = ({ product }) => {
   const { deleteRetch, isLoading } = useUploadproduct(user);
   const handleEdit = (id) => {
     console.log(id);
-    fetch(`https://e-trade-server.vercel.app/product/edit-product/${id}`)
+    fetch(`https://eduworld-backend.vercel.app/product/edit-product/${id}`)
       .then((res) => res.json())
       .then((data) => setEditproduct(data));
     setPopup(true);
   };
 
   const handleRemove = () => {
-    fetch(`https://e-trade-server.vercel.app/product/delete-product/${_id}`, {
+    fetch(`https://eduworld-backend.vercel.app/product/delete-product/${_id}`, {
       method: "DELETE",
     })
       .then((res) => {

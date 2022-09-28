@@ -10,7 +10,7 @@ import ClientsFeedback from "./ClientsFeedback";
 const Home = () => {
   return (
     <div>
-      {/* <Slider /> */}
+      <Slider />
       <Security />
       <ProductCategory />
       <Banner />

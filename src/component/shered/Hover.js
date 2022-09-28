@@ -41,7 +41,7 @@ const Hover = ({ data }) => {
       ratting: data.ratting,
       user: user.email,
     };
-    fetch("https://e-trade-server.vercel.app/wishlist/post-wishlistItems", {
+    fetch("https://eduworld-backend.vercel.app/wishlist/post-wishlistItems", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -49,12 +49,12 @@ const Hover = ({ data }) => {
       body: JSON.stringify(dataDeatils),
     })
       .then((response) => {
-        toast.success("Successfully added to wishlist");
-        refetch();
         return response.json();
       })
       .then((data) => {
         if (data.success === true) {
+          toast.success("Successfully added to wishlist");
+          refetch();
         } else {
           toast.error("Already exist into wishlist");
         }
@@ -76,21 +76,28 @@ const Hover = ({ data }) => {
       vendorName: data?.vendorName,
     };
 
-    fetch("https://e-trade-server.vercel.app/cart/postCart", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newCart),
-    })
-      .then((response) => {
-        toast.success("Successfully added to cart");
-        reload();
-        return response.json();
+    if (!user) {
+      return null;
+    } else {
+      fetch("https://eduworld-backend.vercel.app/cart/postCart", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newCart),
       })
-      .then((items) => {
-        console.log(items);
-      });
+        .then((response) => {
+          return response.json();
+        })
+        .then((items) => {
+          if (items.success === true) {
+            toast.success("Successfully added to Cart");
+            reload();
+          } else {
+            toast.error("Already exist into Cart");
+          }
+        });
+    }
   };
 
   return (
@@ -117,7 +124,7 @@ const Hover = ({ data }) => {
 
         <img
           src={cart}
-          onClick={handleCart}
+          onClick={() => handleCart()}
           className={`p-1 bg-white rounded-full cursor-pointer `}
           alt=""
         />

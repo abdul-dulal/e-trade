@@ -17,7 +17,7 @@ const ClientsFeedback = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     axios
-      .get(`https://e-trade-server.vercel.app/review/all-review`)
+      .get(`https://eduworld-backend.vercel.app/review/all-review`)
       .then((res) => {
         setReviews(res.data);
         setLoading(true);

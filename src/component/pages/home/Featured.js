@@ -10,7 +10,7 @@ const Featured = () => {
   // const { reviews } = useReviews();
   useEffect(() => {
     fetch(
-      "https://e-trade-server.vercel.app/product/get-featured?highlights=top"
+      "https://eduworld-backend.vercel.app/product/get-featured?highlights=top"
     )
       .then((res) => res.json())
       .then((data) => {

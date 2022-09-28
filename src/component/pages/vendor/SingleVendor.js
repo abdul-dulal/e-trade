@@ -25,7 +25,7 @@ const Singlevendor = () => {
     const updateFollwer = { follower: newFollower };
     if (user) {
       fetch(
-        `https://e-trade-server.vercel.app/vendor/update-follwer/${followers?._id}`,
+        `https://eduworld-backend.vercel.app/vendor/update-follwer/${followers?._id}`,
         {
           method: "PUT",
           headers: {
@@ -50,7 +50,7 @@ const Singlevendor = () => {
     const newFollower = parseFloat(follower) - 1;
     const updateFollwer = { follower: newFollower };
     fetch(
-      `https://e-trade-server.vercel.app/vendor/update-follwer/${followers?._id}`,
+      `https://eduworld-backend.vercel.app/vendor/update-follwer/${followers?._id}`,
       {
         method: "PUT",
         headers: {

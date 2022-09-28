@@ -10,7 +10,7 @@ const CartTable = ({ info, total, setTotal }) => {
 
   setTotal(total);
   const removeItems = (id) => {
-    fetch(`https://e-trade-server.vercel.app/cart/deleteCart-item/${id}`, {
+    fetch(`https://eduworld-backend.vercel.app/cart/deleteCart-item/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

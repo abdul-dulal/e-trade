@@ -20,7 +20,7 @@ const Accountdetails = () => {
       name: data.name,
     };
     fetch(
-      `https://e-trade-server.vercel.app/user/put-userInfo/${data?.email}`,
+      `https://eduworld-backend.vercel.app/user/put-userInfo/${data?.email}`,
       {
         method: "PUT",
         headers: {

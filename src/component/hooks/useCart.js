@@ -13,7 +13,7 @@ const useCart = () => {
     refetch: reload,
   } = useQuery("demo", () =>
     fetch(
-      `https://e-trade-server.vercel.app/cart/get-cartItems?user=${user?.email}`
+      `https://eduworld-backend.vercel.app/cart/get-cartItems?user=${user?.email}`
     ).then((res) => res.json())
   );
   if (isLoading) {

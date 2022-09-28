@@ -12,7 +12,7 @@ const ShopCategory = ({ category }) => {
 
   useEffect(() => {
     fetch(
-      `https://e-trade-server.vercel.app/product/get-Bycategory?category=${category}`
+      `https://eduworld-backend.vercel.app/product/get-Bycategory?category=${category}`
     )
       .then((res) => res.json())
       .then((data) => {

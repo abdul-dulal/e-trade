@@ -15,7 +15,7 @@ const VendorProducts = () => {
   // useEffect(() => {
   //   axios
   //     .get(
-  //       `https://e-trade-server.vercel.app/product/search/${searchTerm} && ${user.email}`
+  //       `https://eduworld-backend.vercel.app/product/search/${searchTerm} && ${user.email}`
   //     )
   //     .then((res) => console.log(res.data));
   // }, [searchTerm]);

@@ -5,7 +5,7 @@ const useVendor = (user) => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     fetch(
-      `https://e-trade-server.vercel.app/product/get-vendorPorudct?user=${user}`
+      `https://eduworld-backend.vercel.app/product/get-vendorPorudct?user=${user}`
     )
       .then((res) => res.json())
       .then((data) => {
