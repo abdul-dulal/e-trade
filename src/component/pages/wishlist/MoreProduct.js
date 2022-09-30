@@ -8,9 +8,7 @@ const Moreproduct = ({ category }) => {
   const [loading, setLoading] = useState(false);
   console.log(moreProduct);
   useEffect(() => {
-    fetch(
-      `https://eduworld-backend.vercel.app/product/get-Bycategory?category=${category}`
-    )
+    fetch(`http://localhost:3000/product/get-Bycategory?category=${category}`)
       .then((res) => res.json())
       .then((data) => {
         setMorePorduct(data);

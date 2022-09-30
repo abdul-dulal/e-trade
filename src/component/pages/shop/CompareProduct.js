@@ -5,7 +5,7 @@ import { useState } from "react";
 const CompareProduct = ({ setCompare }) => {
   const handleDefault = () => {
     axios
-      .get("https://eduworld-backend.vercel.app/product/get_default")
+      .get("http://localhost:3000/product/get_default")
       .then((res) => setCompare(res.data));
   };
 

@@ -8,7 +8,7 @@ const useUploadproduct = (user) => {
     refetch: deleteRetch,
   } = useQuery("productdemo", () =>
     fetch(
-      `https://eduworld-backend.vercel.app/product/get-vendorPorudct?user=${user?.email}`
+      `http://localhost:3000/product/get-vendorPorudct?user=${user?.email}`
     ).then((res) => res.json())
   );
   if (isLoading) {

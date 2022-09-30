@@ -50,7 +50,7 @@ const AddProduct = ({ popup, setPopup, editProduct, title }) => {
             price: data.regular,
             price2: data.sale,
           };
-          fetch("https://eduworld-backend.vercel.app/product/product", {
+          fetch("http://localhost:3000/product/product", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

@@ -12,9 +12,9 @@ const useCart = () => {
     data: cartInfo,
     refetch: reload,
   } = useQuery("demo", () =>
-    fetch(
-      `https://eduworld-backend.vercel.app/cart/get-cartItems?user=${user?.email}`
-    ).then((res) => res.json())
+    fetch(`http://localhost:3000/cart/get-cartItems?user=${user?.email}`).then(
+      (res) => res.json()
+    )
   );
   if (isLoading) {
     return <Loading />;

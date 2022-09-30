@@ -16,9 +16,7 @@ const Checkout = () => {
   const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get(
-        `https://eduworld-backend.vercel.app/user/get_userInfo/${user?.email}`
-      )
+      .get(`http://localhost:3000/user/get_userInfo/${user?.email}`)
       .then((res) => setUserInfo(res.data));
   }, [user?.email]);
 
@@ -47,7 +45,7 @@ const Checkout = () => {
     };
     navigate("/payment", { state: { totalPrice, cartInfo } });
     if (!userInfo) {
-      axios.post("https://eduworld-backend.vercel.app/user/post-userInfo", {
+      axios.post("http://localhost:3000/user/post-userInfo", {
         newUser,
       });
     }

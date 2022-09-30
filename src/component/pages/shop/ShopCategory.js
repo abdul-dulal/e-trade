@@ -11,9 +11,7 @@ const ShopCategory = ({ category }) => {
   console.log(category);
 
   useEffect(() => {
-    fetch(
-      `https://eduworld-backend.vercel.app/product/get-Bycategory?category=${category}`
-    )
+    fetch(`http://localhost:3000/product/get-Bycategory?category=${category}`)
       .then((res) => res.json())
       .then((data) => {
         setProdcut(data);

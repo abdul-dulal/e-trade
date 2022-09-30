@@ -13,7 +13,7 @@ const Setting = () => {
 
   useEffect(() => {
     axios
-      .get(`https://eduworld-backend.vercel.app/vendor/user/${user?.email}`)
+      .get(`http://localhost:3000/vendor/user/${user?.email}`)
       .then((res) => setStoreName(res.data));
   }, [user?.email]);
 
@@ -37,7 +37,7 @@ const Setting = () => {
           };
 
           fetch(
-            `https://eduworld-backend.vercel.app/vendor/update-vendorInfo/${storeName.user}`,
+            `http://localhost:3000/vendor/update-vendorInfo/${storeName.user}`,
             {
               method: "PUT",
               headers: {

@@ -4,12 +4,9 @@ import useCart from "../../hooks/useCart";
 const ModalDetails = ({ data, price }) => {
   const { reload } = useCart();
   const handleRemove = () => {
-    fetch(
-      `https://eduworld-backend.vercel.app/cart/deleteCart-item/${data._id}`,
-      {
-        method: "DELETE",
-      }
-    )
+    fetch(`http://localhost:3000/cart/deleteCart-item/${data._id}`, {
+      method: "DELETE",
+    })
       .then((res) => res.json())
       .then((data) => {
         toast("Remove items from cart");

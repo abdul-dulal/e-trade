@@ -12,9 +12,7 @@ const BestSelling = () => {
   const [popup] = React.useContext(backgroundContext);
   //   const { reviews } = useReviews();
   useEffect(() => {
-    fetch(
-      "https://eduworld-backend.vercel.app/product/get-featured?highlights=best"
-    )
+    fetch("http://localhost:3000/product/get-featured?highlights=best")
       .then((res) => res.json())
       .then((data) => {
         setproduct(data);

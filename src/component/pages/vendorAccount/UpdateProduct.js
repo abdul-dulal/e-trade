@@ -49,7 +49,7 @@ const AddProduct = ({ popup, setPopup, editProduct }) => {
             price2: data.sale,
           };
           fetch(
-            `https://eduworld-backend.vercel.app/product/update_product/${editProduct._id}`,
+            `http://localhost:3000/product/update_product/${editProduct._id}`,
             {
               method: "PUT",
               headers: {
