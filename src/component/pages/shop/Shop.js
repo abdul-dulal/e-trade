@@ -27,17 +27,15 @@ const Shop = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    axios
-      .get("https://eduworld-backend.vercel.app/product/allproduct")
-      .then((res) => {
-        setLoading(true);
-        setallproduct(res.data);
-      });
+    axios.get("http://localhost:3000/product/allproduct").then((res) => {
+      setLoading(true);
+      setallproduct(res.data);
+    });
   }, []);
 
   useEffect(() => {
     axios
-      .get(`https://eduworld-backend.vercel.app/product/search/${searchTerm}`)
+      .get(`http://localhost:3000/product/search/${searchTerm}`)
       .then((res) => setProdcut(res.data));
   }, [searchTerm]);
 

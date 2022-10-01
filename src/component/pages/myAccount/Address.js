@@ -23,7 +23,7 @@ const Address = () => {
       city: data.city,
       user: user?.email,
     };
-    fetch("https://eduworld-backend.vercel.app/user/post-userInfo", {
+    fetch("http://localhost:3000/user/post-userInfo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
