@@ -5,7 +5,7 @@ const ModalDetails = ({ data, price }) => {
   const { reload } = useCart();
   const handleRemove = () => {
     fetch(
-      `https://e-trade-server.vercel.app/cart/deleteCart-item/${data._id}`,
+      `https://eduworld-backend.vercel.app/cart/deleteCart-item/${data._id}`,
       {
         method: "DELETE",
       }

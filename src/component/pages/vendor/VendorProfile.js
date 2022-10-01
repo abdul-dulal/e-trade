@@ -8,6 +8,7 @@ const Profile = ({ user }) => {
   const { products, loading } = useVendor(user);
   const result = products.filter((e) => e.ratting > 1);
   const ratting = result.map((e) => e.ratting);
+  console.log(products);
   const Avarage =
     result.length > 0 &&
     ratting.reduce((x, y) => {
@@ -44,7 +45,7 @@ const Profile = ({ user }) => {
               <h4>Avarage Ratting</h4>
               <p className="text-xl  font-semibold">
                 {ratting.length > 0 ? (
-                  <span>{Avarage / ratting.length}.00</span>
+                  <span>{Avarage / ratting.length}</span>
                 ) : (
                   "00"
                 )}

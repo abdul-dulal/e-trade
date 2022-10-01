@@ -9,7 +9,7 @@ const Moreproduct = ({ category }) => {
   console.log(moreProduct);
   useEffect(() => {
     fetch(
-      `https://e-trade-server.vercel.app/get-Bycategory?category=${category}`
+      `https://eduworld-backend.vercel.app/get-Bycategory?category=${category}`
     )
       .then((res) => res.json())
       .then((data) => {

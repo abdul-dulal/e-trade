@@ -28,7 +28,7 @@ const Shop = () => {
 
   useEffect(() => {
     axios
-      .get("https://e-trade-server.vercel.app/product/allproduct")
+      .get("https://eduworld-backend.vercel.app/product/allproduct")
       .then((res) => {
         setLoading(true);
         setallproduct(res.data);
@@ -37,7 +37,7 @@ const Shop = () => {
 
   useEffect(() => {
     axios
-      .get(`https://e-trade-server.vercel.app/product/search/${searchTerm}`)
+      .get(`https://eduworld-backend.vercel.app/product/search/${searchTerm}`)
       .then((res) => setProdcut(res.data));
   }, [searchTerm]);
 

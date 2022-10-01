@@ -10,9 +10,9 @@ const useUserInfo = () => {
     data: userInfo,
     refetch: userRealod,
   } = useQuery("result", () =>
-    fetch(`https://e-trade-server.vercel.app/vendor/user/${user?.email}`).then(
-      (res) => res.json()
-    )
+    fetch(
+      `https://eduworld-backend.vercel.app/vendor/user/${user?.email}`
+    ).then((res) => res.json())
   );
   if (isLoading) {
     return <Loading />;

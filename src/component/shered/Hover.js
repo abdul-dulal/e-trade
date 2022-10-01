@@ -41,7 +41,7 @@ const Hover = ({ data }) => {
       ratting: data.ratting,
       user: user.email,
     };
-    fetch("https://e-trade-server.vercel.app/wishlist/post-wishlistItems", {
+    fetch("https://eduworld-backend.vercel.app/wishlist/post-wishlistItems", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -79,7 +79,7 @@ const Hover = ({ data }) => {
     if (!user) {
       return null;
     } else {
-      fetch("https://e-trade-server.vercel.app/cart/postCart", {
+      fetch("https://eduworld-backend.vercel.app/cart/postCart", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

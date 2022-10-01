@@ -13,7 +13,7 @@ const BestSelling = () => {
   //   const { reviews } = useReviews();
   useEffect(() => {
     fetch(
-      "https://e-trade-server.vercel.app/product/get-featured?highlights=best"
+      "https://eduworld-backend.vercel.app/product/get-featured?highlights=best"
     )
       .then((res) => res.json())
       .then((data) => {

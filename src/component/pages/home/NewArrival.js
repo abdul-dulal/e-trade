@@ -8,7 +8,7 @@ const Newarrival = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     fetch(
-      "https://e-trade-server.vercel.app/product/get-featured?highlights=new"
+      "https://eduworld-backend.vercel.app/product/get-featured?highlights=new"
     )
       .then((res) => res.json())
       .then((data) => {

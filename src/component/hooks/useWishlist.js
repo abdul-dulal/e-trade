@@ -12,7 +12,7 @@ const useWishlist = () => {
     refetch,
   } = useQuery("repoData", () =>
     fetch(
-      `https://e-trade-server.vercel.app/wishlist/get-wishlist?user=${user?.email}`
+      `https://eduworld-backend.vercel.app/wishlist/get-wishlist?user=${user?.email}`
     ).then((res) => res.json())
   );
   if (isLoading) {
