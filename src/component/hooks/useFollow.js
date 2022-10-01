@@ -8,8 +8,8 @@ const useFollower = (id) => {
     data: followers,
     refetch: followerRefetch,
   } = useQuery("productdemo", () =>
-    fetch(`http://localhost:3000/vendor/vendorInfo/${id}`).then((res) =>
-      res.json()
+    fetch(`https://e-trade-server.vercel.app/vendor/vendorInfo/${id}`).then(
+      (res) => res.json()
     )
   );
   if (isLoading) {

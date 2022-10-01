@@ -7,10 +7,8 @@ import Cart from "./component/pages/cart/Cart";
 import Category from "./component/pages/category/Category";
 import Footer from "./component/pages/footer/Footer";
 import Home from "./component/pages/home/Home";
-import Login from "./component/pages/login/Login";
 import LoginRegister from "./component/pages/LoginRegister/LoginRegister";
 import Myaccount from "./component/pages/myAccount/Myaccount.";
-import Register from "./component/pages/register/Register";
 import Contact from "./component/pages/shop/contact/Contact";
 import Shop from "./component/pages/shop/Shop";
 import Singlevendor from "./component/pages/vendor/SingleVendor";
@@ -50,7 +48,6 @@ function App() {
           />
           <Route path="loginregister" element={<LoginRegister />} />
           <Route path="contact" element={<Contact />} />
-          <Route path="register" element={<Register />} />
           <Route path="category/:category" element={<Category />} />
           <Route path="/my-account" element={<Myaccount />}>
             <Route index element={<Dashboard />} />

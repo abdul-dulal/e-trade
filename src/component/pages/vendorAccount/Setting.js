@@ -13,7 +13,7 @@ const Setting = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/vendor/user/${user?.email}`)
+      .get(`https://e-trade-server.vercel.app/vendor/user/${user?.email}`)
       .then((res) => setStoreName(res.data));
   }, [user?.email]);
 
@@ -37,7 +37,7 @@ const Setting = () => {
           };
 
           fetch(
-            `http://localhost:3000/vendor/update-vendorInfo/${storeName.user}`,
+            `https://e-trade-server.vercel.app/vendor/update-vendorInfo/${storeName.user}`,
             {
               method: "PUT",
               headers: {

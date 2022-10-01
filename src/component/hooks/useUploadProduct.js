@@ -8,7 +8,7 @@ const useUploadproduct = (user) => {
     refetch: deleteRetch,
   } = useQuery("productdemo", () =>
     fetch(
-      `http://localhost:3000/product/get-vendorPorudct?user=${user?.email}`
+      `https://e-trade-server.vercel.app/get-vendorPorudct?user=${user?.email}`
     ).then((res) => res.json())
   );
   if (isLoading) {

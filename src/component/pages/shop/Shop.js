@@ -27,15 +27,17 @@ const Shop = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/product/allproduct").then((res) => {
-      setLoading(true);
-      setallproduct(res.data);
-    });
+    axios
+      .get("https://e-trade-server.vercel.app/product/allproduct")
+      .then((res) => {
+        setLoading(true);
+        setallproduct(res.data);
+      });
   }, []);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/product/search/${searchTerm}`)
+      .get(`https://e-trade-server.vercel.app/product/search/${searchTerm}`)
       .then((res) => setProdcut(res.data));
   }, [searchTerm]);
 
@@ -235,7 +237,7 @@ const Shop = () => {
                   <div className="  my-10 ">
                     <div className="flex flex-wrap justify-between">
                       {product.map((product) => (
-                        <SearchProduct product={product} />
+                        <SearchProduct product={product} key={product._id} />
                       ))}
                     </div>
                   </div>
@@ -243,7 +245,7 @@ const Shop = () => {
                   <div>
                     <div className="flex flex-wrap gap-10 my-10">
                       {allproduct.map((product) => (
-                        <AllProduct product={product} />
+                        <AllProduct product={product} key={product._id} />
                       ))}
                     </div>
                   </div>

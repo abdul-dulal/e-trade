@@ -24,13 +24,16 @@ const Singlevendor = () => {
     const newFollower = parseFloat(follower) + 1;
     const updateFollwer = { follower: newFollower };
     if (user) {
-      fetch(`http://localhost:3000/vendor/update-follwer/${followers?._id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updateFollwer),
-      })
+      fetch(
+        `https://e-trade-server.vercel.app/vendor/update-follwer/${followers?._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updateFollwer),
+        }
+      )
         .then((response) => {
           followerRefetch();
           toast("Thanks To Following");
@@ -46,13 +49,16 @@ const Singlevendor = () => {
   const handleunfollow = () => {
     const newFollower = parseFloat(follower) - 1;
     const updateFollwer = { follower: newFollower };
-    fetch(`http://localhost:3000/vendor/update-follwer/${followers?._id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updateFollwer),
-    })
+    fetch(
+      `https://e-trade-server.vercel.app/vendor/update-follwer/${followers?._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updateFollwer),
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         followerRefetch();

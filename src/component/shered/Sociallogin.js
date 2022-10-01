@@ -17,9 +17,10 @@ const Sociallogin = () => {
   const [signInWithFacebook, fbUser, fbLoading] = useSignInWithFacebook(auth);
   const navigate = useNavigate();
   if (gUser || gitUser || fbUser) {
-    navigate("/");
+    return navigate("/");
   }
 
+  console.log(gitUser);
   if (gLoading || gitLoading || fbLoading) {
     return <Loading />;
   }
@@ -33,10 +34,10 @@ const Sociallogin = () => {
             className="text-4xl  text-white  p-2 bg-[#DB4437] hover:text-white duration-1000 rounded-full "
           />
         </button>
-        <button onClick={() => signInWithGithub()}>
+        <button onClick={() => signInWithFacebook()}>
           <FaFacebookF className="text-4xl  text-white  p-2 bg-[#4867AA] hover:text-white duration-1000 rounded-full ml-5" />
         </button>
-        <button onClick={() => signInWithFacebook()}>
+        <button onClick={() => signInWithGithub()}>
           <AiOutlineGithub className="text-4xl  text-white  p-2 bg-[#161B22] hover:text-white duration-1000 rounded-full ml-5 " />
         </button>
       </div>

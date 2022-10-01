@@ -11,28 +11,27 @@ import logo from "../../assets/demo-store-logo-1634113310.jpg";
 import auth from "../../FirebaseInit";
 import Logout from "../shered/Logout";
 import Cartmodal from "../pages/cart/CartModal";
-import clickOutside from "click-outside";
-
+var clickOutside = require("click-outside");
 const Navbar = () => {
   const [hide, setHide] = useState(true);
   const [cartmodal, setCartmodal] = useState(false);
   const [user] = useAuthState(auth);
   const { wishlistInfo } = useWishlist();
   const { cartInfo } = useCart();
-
+  var container = document.querySelector("#container");
   const handleHide = () => {
     setHide(!hide);
   };
-  var container = document.querySelector("#container");
 
-  const al = () => {
-    clickOutside(container, function (e) {
-      console.log(e);
-      setCartmodal(false);
-    });
-  };
+  console.log(cartmodal);
+  var unbind = clickOutside(container, function (e) {
+    console.log(e);
+    setCartmodal(false);
+  });
+  setTimeout(function () {
+    unbind();
+  }, 5000);
 
-  al();
   return (
     <nav>
       <div
@@ -113,10 +112,13 @@ const Navbar = () => {
                 {wishlistInfo ? wishlistInfo.length : "0"}
               </p>
             </div>
-            <div className="relative">
+
+            <div id="container" className="relative">
               <li>
                 <img
-                  onClick={() => setCartmodal(!cartmodal)}
+                  onClick={() => {
+                    setCartmodal(!cartmodal);
+                  }}
                   src={cart}
                   className="cursor-pointer"
                   alt=""
@@ -126,6 +128,7 @@ const Navbar = () => {
                 {cartInfo ? cartInfo?.length : "0"}
               </p>
             </div>
+
             <div className="dropdown dropdown-end ">
               <label tabIndex="0" className="">
                 {user ? (

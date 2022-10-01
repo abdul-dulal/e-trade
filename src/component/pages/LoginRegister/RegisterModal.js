@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import auth from "../../../FirebaseInit";
 import login from "../../../assets/login-vector.png";
 import ReCAPTCHA from "react-google-recaptcha";
-
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import remove from "../../../assets/icon/delete.png";
 import Loading from "../../shered/Loading";
@@ -27,6 +26,7 @@ const RegisterModal = ({ openRegister, setOpenRegister }) => {
   const navigate = useNavigate();
   const onSubmit = async (data) => {
     createUserWithEmailAndPassword(data.email, data.password);
+
     reset();
     if (vendor === "vendor") {
       const newUser = {
@@ -36,7 +36,7 @@ const RegisterModal = ({ openRegister, setOpenRegister }) => {
         user: data.email,
         name: data.store,
       };
-      fetch("http://localhost:3000/vendor/vendor", {
+      fetch("https://e-trade-server.vercel.app/vendor/vendor", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -52,6 +52,7 @@ const RegisterModal = ({ openRegister, setOpenRegister }) => {
 
   if (luser) {
     return navigate("/");
+  } else {
   }
 
   if (loading) {

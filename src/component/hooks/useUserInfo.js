@@ -10,8 +10,8 @@ const useUserInfo = () => {
     data: userInfo,
     refetch: userRealod,
   } = useQuery("result", () =>
-    fetch(`http://localhost:3000/vendor/user/${user?.email}`).then((res) =>
-      res.json()
+    fetch(`https://e-trade-server.vercel.app/vendor/user/${user?.email}`).then(
+      (res) => res.json()
     )
   );
   if (isLoading) {

@@ -16,7 +16,7 @@ const Vendor = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/vendor/user/${user?.email}`)
+      .get(`https://e-trade-server.vercel.app/vendor/user/${user?.email}`)
       .then((res) => setVendor(res.data));
   }, [user?.email]);
 

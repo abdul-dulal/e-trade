@@ -21,7 +21,7 @@ const Cartmodal = ({ cartmodal }) => {
             {cartInfo?.length > 0 ? (
               <div>
                 {cartInfo.map((data) => (
-                  <div>{<ModalDetails data={data} />}</div>
+                  <div>{<ModalDetails data={data} key={data._id} />}</div>
                 ))}
 
                 <div className="flex justify-between text-xl font-semibold px-6 mt-5">
