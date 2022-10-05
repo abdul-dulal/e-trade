@@ -2,7 +2,7 @@ import React from "react";
 import { ThreeCircles } from "react-loader-spinner";
 const Loading = () => {
   return (
-    <div className="block mx-auto">
+    <div className="block mx-auto container">
       <ThreeCircles
         height="100"
         width="100"

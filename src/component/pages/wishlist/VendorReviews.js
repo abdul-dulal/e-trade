@@ -5,16 +5,7 @@ import { toast } from "react-toastify";
 const VendorReviews = ({ review }) => {
   const [currentValue, setCurrentValue] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
-  //   const [clientReview, setClientReview] = useState();
   const stars = Array(5).fill(0);
-
-  //   const url = `https://gentle-inlet-09370.herokuapp.com/vendorName?vendorName=${review.reviewName}`;
-  //   console.log(url);
-  //   useEffect(() => {
-  //     fetch(url)
-  //       .then((res) => res.json())
-  //       .then((data) => setClientReview(data));
-  //   }, [review?.reviewName]);
 
   const handleClick = (value) => {
     setCurrentValue(value);
@@ -48,7 +39,9 @@ const VendorReviews = ({ review }) => {
               alt=""
             />
           ) : (
-            ""
+            <h1 className="text-3xl mt-20 font-serif lg:mb-96">
+              There are no review
+            </h1>
           )}
           <div className="">
             <h2>{review?.reviewName}</h2>
@@ -91,7 +84,7 @@ const VendorReviews = ({ review }) => {
 
         <button
           onClick={onOnclickHandler}
-          className="h-10 w-24 bg-purple-600 text-white rounded-sm"
+          className="h-10 w-24 bg-primary text-white rounded-sm"
         >
           Submit
         </button>

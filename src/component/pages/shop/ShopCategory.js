@@ -12,7 +12,7 @@ const ShopCategory = ({ category }) => {
 
   useEffect(() => {
     fetch(
-      `https://e-trade-server.vercel.app/get-Bycategory?category=${category}`
+      `https://e-trade-server.vercel.app/product/get-Bycategory?category=${category}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -57,7 +57,7 @@ const ShopCategory = ({ category }) => {
               ))}
             </div>
           ) : (
-            <h1 className="text-xl font-serif text-center lg:mb-96">
+            <h1 className="text-3xl mt-20 font-serif lg:mb-96">
               There are no products
             </h1>
           )}

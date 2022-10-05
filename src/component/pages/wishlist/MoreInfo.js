@@ -12,7 +12,7 @@ const Moreinfo = ({ data }) => {
         <button
           onClick={() => setShowdata("vendor")}
           className={`text-xl font-semibold ${
-            showdata === "vendor" ? "border-b-4 border-purple-600" : ""
+            showdata === "vendor" ? "border-b-4 border-primary" : ""
           }`}
         >
           Vendor's Info
@@ -20,7 +20,7 @@ const Moreinfo = ({ data }) => {
         <button
           onClick={() => setShowdata("review")}
           className={` text-xl font-semibold text-black ${
-            showdata === "review" ? "border-b-4 border-purple-600" : ""
+            showdata === "review" ? "border-b-4 border-primary" : ""
           }`}
         >
           Reviews
@@ -28,7 +28,7 @@ const Moreinfo = ({ data }) => {
         <button
           onClick={() => setShowdata("more")}
           className={` text-xl  font-semibold  ${
-            showdata === "more" ? "border-b-4 border-purple-600" : ""
+            showdata === "more" ? "border-b-4 border-primary" : ""
           }`}
         >
           More Product
