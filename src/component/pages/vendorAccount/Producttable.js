@@ -15,14 +15,14 @@ const Producttable = ({ product }) => {
   const { deleteRetch, isLoading } = useUploadproduct(user);
   const handleEdit = (id) => {
     console.log(id);
-    fetch(`http://localhost:3000/edit-product/${id}`)
+    fetch(`https://e-trade-server.vercel.app/edit-product/${id}`)
       .then((res) => res.json())
       .then((data) => setEditproduct(data));
     setPopup(true);
   };
 
   const handleRemove = () => {
-    fetch(`http://localhost:3000/delete-product/${_id}`, {
+    fetch(`https://e-trade-server.vercel.app/delete-product/${_id}`, {
       method: "DELETE",
     })
       .then((res) => {

@@ -5,7 +5,7 @@ import { useState } from "react";
 const CompareProduct = ({ setCompare }) => {
   const handleDefault = () => {
     axios
-      .get("http://localhost:3000/get_default")
+      .get("https://e-trade-server.vercel.app/get_default")
       .then((res) => setCompare(res.data));
   };
 

@@ -48,13 +48,16 @@ const AddProduct = ({ popup, setPopup, editProduct }) => {
             price: data.regular,
             price2: data.sale,
           };
-          fetch(`http://localhost:3000/update_product/${editProduct._id}`, {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(products),
-          })
+          fetch(
+            `https://e-trade-server.vercel.app/update_product/${editProduct._id}`,
+            {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(products),
+            }
+          )
             .then((response) => {
               toast("Prodcut successfully update..");
               deleteRetch();

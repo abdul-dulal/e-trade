@@ -10,7 +10,7 @@ const CartTable = ({ info, total, setTotal }) => {
 
   setTotal(total);
   const removeItems = (id) => {
-    fetch(`http://localhost:3000/cart/deleteCart-item/${id}`, {
+    fetch(`https://e-trade-server.vercel.app/cart/deleteCart-item/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

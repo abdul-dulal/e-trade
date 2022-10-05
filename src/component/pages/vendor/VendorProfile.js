@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import useVendor from "../../hooks/useVendor";
 import Loading from "../../shered/Loading";
 import Rattings from "../../shered/Ratting";
