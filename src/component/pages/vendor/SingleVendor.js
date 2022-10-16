@@ -71,7 +71,7 @@ const Singlevendor = () => {
     <>
       <Breadcumb tag="Vendor" />
       <div className="container">
-        <div className="flex justify-between container mt-10 border-2 p-2">
+        <div className="flex justify-between lg:px-20 md:px-10 px-5 mt-10 border-2 p-2">
           <div>
             <img
               src={followers?.img}

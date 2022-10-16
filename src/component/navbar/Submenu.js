@@ -15,7 +15,6 @@ import auth from "../../FirebaseInit";
 const Submenu = () => {
   const [hide, setHide] = useState(true);
   const [show, setShow] = useState(false);
-  //   const [cartmodal, setCartmodal] = useState(false);
   const [user] = useAuthState(auth);
   const handleHide = () => {
     setHide(!hide);
@@ -24,7 +23,7 @@ const Submenu = () => {
     setShow(!show);
   };
   return (
-    <div className=" grid grid-cols-2 container lg:hidden md:hidden  ">
+    <div className=" grid grid-cols-2  lg:hidden md:hidden  ">
       <div className="grid grid-cols-2 relative">
         <div className="space-y-6">
           <HiMenu className="text-3xl" onClick={handleShow} />

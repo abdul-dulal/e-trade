@@ -17,7 +17,7 @@ const ProductCategory = () => {
   return (
     <div className="mt-24">
       <h1 className="text-2xl font-semibold text-center">Browse by Category</h1>
-      <div className="container mt-12 ">
+      <div className=" mt-12 ">
         <ul className="flex flex-wrap gap-3 justify-center">
           <Link
             to={"category/accessories"}

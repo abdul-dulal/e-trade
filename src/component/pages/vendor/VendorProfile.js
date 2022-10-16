@@ -18,7 +18,7 @@ const Profile = ({ user }) => {
     <div>
       {loading ? (
         <div>
-          <div className="container flex justify-between flex-wrap mt-10 gap-10">
+          <div className="lg:px-20 md:px-10 px-5 flex justify-between flex-wrap mt-10 gap-10">
             <div className="border-2 px-4 py-4  ">
               <h4>Products</h4>
               <p className="text-xl  font-semibold">{products?.length}</p>
@@ -51,7 +51,7 @@ const Profile = ({ user }) => {
               </p>
             </div>
           </div>
-          <div className="my-14">
+          <div className="my-14 lg:px-20 md:px-10 px-5">
             <h2 className="text-2xl font-semibold">
               Product Ratting and Reviews
             </h2>

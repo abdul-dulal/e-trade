@@ -23,7 +23,6 @@ const Navbar = () => {
     setHide(!hide);
   };
 
-  console.log(cartmodal);
   var unbind = clickOutside(container, function (e) {
     console.log(e);
     setCartmodal(false);
@@ -36,7 +35,7 @@ const Navbar = () => {
     <nav>
       <div
         id="container"
-        className="flex container justify-between items-center lg:h-16 md:h-16 h-6 invisible md:visible lg:visible  "
+        className="flex  lg:px-20 md:px-10 px-5 justify-between items-center lg:h-16 md:h-16 h-6 invisible md:visible lg:visible  "
       >
         <div>
           <ul className="flex gap-8 items-center">

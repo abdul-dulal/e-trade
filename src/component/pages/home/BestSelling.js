@@ -27,7 +27,7 @@ const BestSelling = () => {
       {loading ? (
         <>
           <div
-            className={`flex lg:justify-between gap-8 flex-wrap justify-center container mt-10  overflow-hidden `}
+            className={`flex lg:justify-between gap-8 flex-wrap justify-center lg:px-20 md:px-10 px-5 mt-10  overflow-hidden `}
           >
             {products.map((product) => (
               <div className="parent " key={product._id}>

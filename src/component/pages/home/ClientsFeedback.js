@@ -24,7 +24,7 @@ const ClientsFeedback = () => {
       });
   }, []);
   return (
-    <div className="container  bg-gray-200 mb-20">
+    <div className="lg:px-20 md:px-10 px-5  bg-gray-200 mb-20">
       <h1 className="text-2xl my-16 font-serif pt-8">Users Feedback</h1>
       <div className=" py-10">
         {loading ? (
@@ -33,19 +33,22 @@ const ClientsFeedback = () => {
               425: {
                 width: 425,
                 slidesPerView: 1,
+                spaceBetween: 8,
               },
               768: {
                 width: 768,
                 slidesPerView: 2,
+                spaceBetween: 10,
               },
               1360: {
                 width: 1360,
                 slidesPerView: 3,
+                spaceBetween: 20,
               },
             }}
             modules={[Pagination, A11y]}
             pagination={{ clickable: true }}
-            spaceBetween={20}
+            // spaceBetween={20}
             slidesPerView={3}
             onSwiper={(swiper) => console.log(swiper)}
             onSlideChange={() => console.log("slide change")}

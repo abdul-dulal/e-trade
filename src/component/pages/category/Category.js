@@ -25,7 +25,7 @@ const Electical = () => {
       <Breadcumb tags={""} />
       {loading ? (
         <>
-          <div className="flex lg:justify-between justify-center gap-8 flex-wrap  container mt-10  overflow-hidden ">
+          <div className="flex lg:justify-between justify-center gap-8 flex-wrap  lg:px-20 md:px-10 px-5 mt-10  overflow-hidden ">
             {products.map((product) => (
               <div className="parent " key={product._id}>
                 <div className={` rounded-md  shadow w-[300px] h-96 border-2 `}>

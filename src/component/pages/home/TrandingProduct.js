@@ -10,7 +10,7 @@ const TrandingProduct = () => {
 
   return (
     <div className={`my-16 `}>
-      <div className="flex justify-between items-center container">
+      <div className="flex justify-between items-center lg:px-20 md:px-10 px-5">
         <div>
           <h1 className="text-2xl font-semibold text-center lg:block md:block hidden md:mt-8 ">
             Trending Products
@@ -30,7 +30,7 @@ const TrandingProduct = () => {
             </button>
             <button
               onClick={() => setShowproduct("top")}
-              className={`uppercase border-b-2 border-transparenthover:border-b-2 hover:border-primary hover:text-primary   text-balck font-semibold  ${
+              className={`uppercase border-b-2 border-transparent hover:border-b-2 hover:border-primary hover:text-primary   text-balck font-semibold  ${
                 showProduct === "top"
                   ? "text-primary border-b-2 border-primary"
                   : ""

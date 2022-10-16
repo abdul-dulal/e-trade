@@ -4,7 +4,7 @@
 
 @layer utilities {
   .container {
-    @apply lg:px-20 md:px-10 px-5;
+    /* @apply lg:px-20 md:px-10 px-5; */
   }
 }
 

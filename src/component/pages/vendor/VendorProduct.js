@@ -12,10 +12,10 @@ const VendorProduct = ({ user }) => {
       {loading ? (
         <div className="">
           {products.length > 0 ? (
-            <div className="flex lg:justify-between mb-10 gap-8 flex-wrap justify-center container mt-10  overflow-hidden ">
+            <div className="flex lg:justify-between mb-10 gap-8 flex-wrap justify-center lg:px-20 md:px-10 px-5 mt-10  overflow-hidden ">
               {products.map((product) => (
                 <div className="parent" key={product._id}>
-                  <div class=" rounded-md bg-base-100 shadow-xl w-[270px] h-96 border-2">
+                  <div class=" rounded-md bg-base-100 shadow-xl w-[310px] h-96 border-2">
                     <img
                       src={product.img}
                       className="  h-60 pt-3 block mx-auto hover:scale-110 duration-500"

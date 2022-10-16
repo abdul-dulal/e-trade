@@ -45,7 +45,7 @@ const Shop = () => {
     <div>
       <Breadcumb tag="Shop" />
       {loading ? (
-        <div className="lg:flex md:flex  container">
+        <div className="lg:flex md:flex  lg:px-20 md:px-10 px-5">
           <div className="lg:block md:block hidden">
             <div className="w-80">
               <h2 className="text-2xl mt-4">Search</h2>

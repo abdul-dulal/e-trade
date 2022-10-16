@@ -5,12 +5,12 @@ import payment from "../../../assets/payment.png";
 
 const Security = () => {
   return (
-    <div className="container flex flex-wrap mt-16 justify-center gap-20  items-center space-y-4">
+    <div className="lg:px-20 md:px-10 px-6 flex flex-wrap mt-16 justify-between space-y-5  items-center ">
       <div className="flex mt-3 ">
         <img src={support} className="w-14" alt="" />
         <div className="ml-6">
           <h2 className="text-xl font-bold">Free Shipping</h2>
-          <p>Free shipping on all order</p>
+          <p>Free shipping on all the order</p>
         </div>
       </div>
       <div className="flex ">

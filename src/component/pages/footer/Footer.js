@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="bg-[#1F2937] container grid lg:grid-cols-4 md:grid-cols-2  w-full py-20  lg:space-y-0 space-y-8 ">
-      <div className="text-white">
+    <div className="bg-[#1F2937] lg:px-20 md:px-10 px-5 flex justify-between flex-wrap  w-full py-20    ">
+      <div className="text-white space-y-3">
         <h2 className="text-white text-xl font-semibold uppercase">About Us</h2>
         <ul className="text-white font-semibold">
           <li>About Us</li>
           <Link to="/contact">Contact</Link>
         </ul>
       </div>
-      <div className="text-white">
-        <h2 className="text-white text-xl font-semibold uppercase">
+      <div className="text-white mt-0 space-y-3">
+        <h2 className="text-white text-xl font-semibold uppercase ">
           UseFull link
         </h2>
         <ul className="font-semibold">
@@ -20,7 +20,7 @@ const Footer = () => {
           <li>Support Policy</li>
         </ul>
       </div>
-      <div className="text-white">
+      <div className="text-white space-y-3">
         <h2 className="text-white text-xl font-semibold uppercase">
           follow us
         </h2>
@@ -39,7 +39,7 @@ const Footer = () => {
           </a>
         </ul>
       </div>
-      <div className="text-white">
+      <div className="text-white space-y-3">
         <h2 className="text-white text-xl font-semibold uppercase">
           SUBSCRIBE
         </h2>
@@ -48,7 +48,7 @@ const Footer = () => {
           type="text"
           placeholder=" example@gmail.com"
           className="h-10 w-72 px-1"
-        />{" "}
+        />
         <br />
         <input
           type="submit"

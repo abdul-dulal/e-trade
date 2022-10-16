@@ -5,7 +5,7 @@ import banner2 from "../../../assets/banner/sub-banner-2.jpg";
 const Banner = () => {
   const navigate = useNavigate();
   return (
-    <div className="grid lg:grid-cols-2 gap-12  my-14 container">
+    <div className="grid lg:grid-cols-2 gap-12  my-14 lg:px-20 md:px-10 px-5">
       <div
         className="ImgHover w-full lg:py-16 md:py-16 py-10 lg:my-14 md:mt-10 mt-10 hover:scale-110 duration-1000 "
         style={{

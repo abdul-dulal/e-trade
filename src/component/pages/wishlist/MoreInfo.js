@@ -31,7 +31,7 @@ const Moreinfo = ({ data }) => {
             showdata === "more" ? "border-b-4 border-primary" : ""
           }`}
         >
-          More Product
+          More Product like
         </button>
       </div>
       <p className=" border-solid border bg-gray-100 my-5"></p>

@@ -5,7 +5,7 @@ import Rattings from "../../shered/Ratting";
 const AllProduct = ({ product }) => {
   return (
     <div className="parent " key={product._id}>
-      <div className={` rounded-md  shadow w-[300px] h-96 border-2 `}>
+      <div className={` rounded-md  shadow w-[280px] h-96 border-2 `}>
         <img
           src={product.img}
           className="  h-60 pt-3 block mx-auto rounded-lg hover:scale-110 duration-500"

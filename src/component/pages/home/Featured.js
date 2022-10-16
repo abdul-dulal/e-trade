@@ -23,7 +23,7 @@ const Featured = () => {
     <div>
       {loading ? (
         <>
-          <div className="flex lg:justify-between gap-8 flex-wrap justify-center container mt-10  overflow-hidden ">
+          <div className="flex lg:justify-between gap-8 flex-wrap justify-center lg:px-20 md:px-10 px-5 mt-10  overflow-hidden ">
             {products.map((product) => (
               <div className="parent" key={product._id}>
                 <div className=" rounded-md bg-base-100 shadow w-[312px] h-96 border-2">

@@ -24,7 +24,7 @@ const Vendorslider = () => {
   }, []);
 
   return (
-    <div className="container mt-20">
+    <div className="lg:px-20 md:px-10 px-5 mt-20">
       <h1 className="text-3xl font-serif text-center mb-10">Our Vendors</h1>
 
       {loading ? (
